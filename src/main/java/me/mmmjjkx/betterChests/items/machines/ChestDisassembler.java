@@ -2,6 +2,7 @@ package me.mmmjjkx.betterChests.items.machines;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.items.BCItems;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
@@ -13,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChestDisassembler extends AContainer {
+public class ChestDisassembler extends AContainer implements RecipeDisplayItem {
     public ChestDisassembler(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(BCGroups.MAIN, item, recipeType, recipe);
 
@@ -108,7 +109,7 @@ public class ChestDisassembler extends AContainer {
     }
 
     @Override
-    public List<ItemStack> getDisplayRecipes() {
+    public @NotNull List<ItemStack> getDisplayRecipes() {
         List<ItemStack> items = new ArrayList<>();
 
         List<MachineRecipe> recipes = getMachineRecipes();

@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class BCItems {
     public static final LocationRecorder LOCATION_RECORDER = new LocationRecorder(
-            new SlimefunItemStack("LOCATION_RECORDER", BCItemStacks.LOCATION_RECORDER),
+            new SlimefunItemStack("BC_LOCATION_RECORDER", BCItemStacks.LOCATION_RECORDER),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, SlimefunItems.SYNTHETIC_SAPPHIRE.clone(), null,
