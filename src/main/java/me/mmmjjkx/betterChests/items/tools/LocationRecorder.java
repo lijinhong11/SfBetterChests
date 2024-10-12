@@ -63,10 +63,6 @@ public class LocationRecorder extends SimpleSlimefunItem<ItemUseHandler> impleme
                             .deserialize("&bX: &a" + loc.getBlockX() + " &bY: &a" + loc.getBlockY() + " &bZ: &a" + loc.getBlockZ());
 
                     List<Component> lore = meta.lore();
-                    if (lore == null) {
-                        lore = List.of(newLore);
-                    }
-
 
                     lore.add(3, Component.empty());
                     lore.add(4,newLore);

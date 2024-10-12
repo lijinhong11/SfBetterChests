@@ -12,6 +12,8 @@ import org.jetbrains.annotations.NotNull;
 public class ChestDisassembler extends AContainer {
     public ChestDisassembler(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(BCGroups.MAIN, item, recipeType, recipe);
+
+        setProcessingSpeed(1);
     }
 
     @Override
@@ -81,5 +83,15 @@ public class ChestDisassembler extends AContainer {
     @Override
     public @NotNull String getMachineIdentifier() {
         return getId();
+    }
+
+    @Override
+    public int getCapacity() {
+        return 128;
+    }
+
+    @Override
+    public int getEnergyConsumption() {
+        return 16;
     }
 }

@@ -7,6 +7,7 @@ import me.mmmjjkx.betterChests.items.chests.OnlyInputChest;
 import me.mmmjjkx.betterChests.items.chests.OnlyOutputChest;
 import me.mmmjjkx.betterChests.items.chests.SimpleChest;
 import me.mmmjjkx.betterChests.items.machines.ChestDisassembler;
+import me.mmmjjkx.betterChests.items.tools.ChestColorer;
 import me.mmmjjkx.betterChests.items.tools.LocationRecorder;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -23,7 +24,7 @@ public class BCItems {
 
     public static final SimpleChest CHEST_27 = new SimpleChest(
             27,
-            new SlimefunItemStack("BC_CHEST_27", Material.CHEST, "&bSimple Chest", "&7Just a simple chest"),
+            new SlimefunItemStack("BC_CHEST_27", Material.GLASS, "&b&lSimple Chest"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, null, null,
@@ -33,7 +34,7 @@ public class BCItems {
 
     public static final OnlyInputChest CHEST_INPUT_27 = new OnlyInputChest(
             27,
-            new SlimefunItemStack("BC_CHEST_INPUT_27", Material.CHEST, "&bSimple Chest &c&l(Only Input)"),
+            new SlimefunItemStack("BC_CHEST_INPUT_27", Material.GLASS, "&b&lSimple Chest &c&l(Only Input)"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, new ItemStack(Material.HOPPER), null,
@@ -43,7 +44,7 @@ public class BCItems {
 
     public static final OnlyOutputChest CHEST_OUTPUT_27 = new OnlyOutputChest(
             27,
-            new SlimefunItemStack("BC_CHEST_OUTPUT_27", Material.CHEST, "&bSimple Chest &c&l(Only Output)"),
+            new SlimefunItemStack("BC_CHEST_OUTPUT_27", Material.GLASS, "&b&lSimple Chest &c&l(Only Output)"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, new ItemStack(Material.REDSTONE), null,
@@ -53,7 +54,7 @@ public class BCItems {
     
     public static final SimpleChest CHEST_36 = new SimpleChest(
             36,
-            new SlimefunItemStack("BC_CHEST_36", Material.CHEST, "&bBig Chest", "&7Big chest"),
+            new SlimefunItemStack("BC_CHEST_36", Material.GLASS, "&b&lBig Chest"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, null, null,
@@ -63,7 +64,7 @@ public class BCItems {
 
     public static final OnlyInputChest CHEST_INPUT_36 = new OnlyInputChest(
             36,
-            new SlimefunItemStack("BC_CHEST_INPUT_36", Material.CHEST, "&bBig Chest &c&l(Only Input)"),
+            new SlimefunItemStack("BC_CHEST_INPUT_36", Material.GLASS, "&b&lBig Chest &c&l(Only Input)"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, new ItemStack(Material.HOPPER), null,
@@ -73,7 +74,7 @@ public class BCItems {
 
     public static final OnlyOutputChest CHEST_OUTPUT_36 = new OnlyOutputChest(
             36,
-            new SlimefunItemStack("BC_CHEST_OUTPUT_36", Material.CHEST, "&bBig Chest &c&l(Only Output)"),
+            new SlimefunItemStack("BC_CHEST_OUTPUT_36", Material.GLASS, "&b&lBig Chest &c&l(Only Output)"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, new ItemStack(Material.REDSTONE), null,
@@ -83,7 +84,7 @@ public class BCItems {
 
     public static final SimpleChest CHEST_45 = new SimpleChest(
             45,
-            new SlimefunItemStack("BC_CHEST_45", Material.CHEST, "&bBigger Chest", "&7Bigger chest"),
+            new SlimefunItemStack("BC_CHEST_45", Material.GLASS, "&b&lBigger Chest"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, null, null,
@@ -93,7 +94,7 @@ public class BCItems {
 
     public static final OnlyInputChest CHEST_INPUT_45 = new OnlyInputChest(
             45,
-            new SlimefunItemStack("BC_CHEST_INPUT_45", Material.CHEST, "&bBigger Chest &c&l(Only Input)"),
+            new SlimefunItemStack("BC_CHEST_INPUT_45", Material.GLASS, "&b&lBigger Chest &c&l(Only Input)"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, new ItemStack(Material.HOPPER), null,
@@ -103,7 +104,7 @@ public class BCItems {
 
     public static final OnlyOutputChest CHEST_OUTPUT_45 = new OnlyOutputChest(
             45,
-            new SlimefunItemStack("BC_CHEST_OUTPUT_45", Material.CHEST, "&bBigger Chest &c&l(Only Output)"),
+            new SlimefunItemStack("BC_CHEST_OUTPUT_45", Material.GLASS, "&b&lBigger Chest &c&l(Only Output)"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, new ItemStack(Material.REDSTONE), null,
@@ -113,7 +114,7 @@ public class BCItems {
 
     public static final SimpleChest CHEST_54 = new SimpleChest(
             54,
-            new SlimefunItemStack("BC_CHEST_54", Material.CHEST, "&bThe Biggest Chest", "&7The biggest chest in just one block!"),
+            new SlimefunItemStack("BC_CHEST_54", Material.GLASS, "&b&lThe Biggest Chest"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, null, null,
@@ -123,7 +124,7 @@ public class BCItems {
 
     public static final OnlyInputChest CHEST_INPUT_54 = new OnlyInputChest(
             54,
-            new SlimefunItemStack("BC_CHEST_INPUT_54", Material.CHEST, "&bThe Biggest Chest &c&l(Only Input)"),
+            new SlimefunItemStack("BC_CHEST_INPUT_54", Material.GLASS, "&b&lThe Biggest Chest &c&l(Only Input)"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, new ItemStack(Material.HOPPER), null,
@@ -133,7 +134,7 @@ public class BCItems {
 
     public static final OnlyOutputChest CHEST_OUTPUT_54 = new OnlyOutputChest(
             54,
-            new SlimefunItemStack("BC_CHEST_OUTPUT_54", Material.CHEST, "&bThe Biggest Chest &c&l(Only Output)"),
+            new SlimefunItemStack("BC_CHEST_OUTPUT_54", Material.GLASS, "&b&lThe Biggest Chest &c&l(Only Output)"),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, new ItemStack(Material.REDSTONE), null,
@@ -146,12 +147,22 @@ public class BCItems {
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                     null, new ItemStack(Material.IRON_AXE), null,
-                    new ItemStack(Material.IRON_INGOT), new ItemStack(Material.CHEST), new ItemStack(Material.IRON_INGOT),
+                    new ItemStack(Material.IRON_INGOT), new ItemStack(Material.GLASS), new ItemStack(Material.IRON_INGOT),
                     null, new ItemStack(Material.REDSTONE), null
+            });
+
+    public static final ChestColorer CHEST_COLORER = new ChestColorer(
+            new SlimefunItemStack("BC_CHEST_COLORER", BCItemStacks.CHEST_COLOR_CHANGER),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    null, new ItemStack(Material.GLASS), null,
+                    new ItemStack(Material.WHITE_DYE), new ItemStack(Material.STICK), new ItemStack(Material.BLUE_DYE),
+                    new ItemStack(Material.RED_DYE), new ItemStack(Material.REDSTONE_BLOCK), new ItemStack(Material.YELLOW_DYE)
             });
 
     public static void registerItems() {
         LOCATION_RECORDER.register(BetterChests.INSTANCE);
+        CHEST_COLORER.register(BetterChests.INSTANCE);
 
         CHEST_27.register(BetterChests.INSTANCE);
         CHEST_36.register(BetterChests.INSTANCE);
