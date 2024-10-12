@@ -20,6 +20,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -57,14 +58,18 @@ public class ChestColorer extends SimpleSlimefunItem<ItemUseHandler> implements 
 
                 ColorMaterials color = ColorMaterials.values()[nextIndex];
 
+                ItemMeta meta = item.getItemMeta();
+
                 Component lore = LegacyComponentSerializer.legacyAmpersand().deserialize("&dCurrent color: &6" + color.name())
                         .decoration(TextDecoration.ITALIC, false);
                 List<Component> loreList = item.lore();
 
                 loreList.set(3, lore);
-                item.lore(loreList);
 
-                PersistentDataAPI.setInt(item.getItemMeta(), COLOR_KEY, nextIndex);
+                meta.lore(loreList);
+
+                PersistentDataAPI.setInt(meta, COLOR_KEY, nextIndex);
+                item.setItemMeta(meta);
             } else {
                 Optional<Block> block = e.getClickedBlock();
                 if (block.isPresent()) {

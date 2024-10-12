@@ -2,6 +2,7 @@ package me.mmmjjkx.betterChests.items;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mmmjjkx.betterChests.BetterChests;
 import me.mmmjjkx.betterChests.items.chests.OnlyInputChest;
 import me.mmmjjkx.betterChests.items.chests.OnlyOutputChest;
@@ -17,9 +18,9 @@ public class BCItems {
             new SlimefunItemStack("LOCATION_RECORDER", BCItemStacks.LOCATION_RECORDER),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                    null, new ItemStack(Material.REDSTONE), null,
-                    new ItemStack(Material.REDSTONE_TORCH), new ItemStack(Material.COMPASS), new ItemStack(Material.REDSTONE_TORCH),
-                    null, new ItemStack(Material.REDSTONE), null
+                    null, SlimefunItems.SYNTHETIC_SAPPHIRE.clone(), null,
+                    null, SlimefunItems.GPS_TRANSMITTER_3, null,
+                    null, SlimefunItems.GPS_MARKER_TOOL, null
             });
 
     public static final SimpleChest CHEST_27 = new SimpleChest(

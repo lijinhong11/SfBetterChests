@@ -5,8 +5,10 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.BetterChests;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
@@ -68,6 +70,8 @@ public class LocationRecorder extends SimpleSlimefunItem<ItemUseHandler> impleme
                     lore.add(4,newLore);
                     meta.lore(lore);
 
+                    self.setItemMeta(meta);
+
                     p.sendMessage("§aLocation recorded!");
                 } else {
                     p.sendMessage("§cYou need to be right-clicking at a block to record its location.");
@@ -82,6 +86,12 @@ public class LocationRecorder extends SimpleSlimefunItem<ItemUseHandler> impleme
 
                 if (world.isPresent() && x.isPresent() && y.isPresent() && z.isPresent()) {
                     Location loc = new Location(Bukkit.getWorld(world.get()), x.getAsInt(), y.getAsInt(), z.getAsInt());
+
+                    if (!Slimefun.getProtectionManager().hasPermission(p, loc, Interaction.INTERACT_BLOCK)) {
+                        p.sendMessage("§cYou do not have permission to access this location.");
+                        return;
+                    }
+
                     BlockMenu menu = BlockStorage.getInventory(loc);
                     if (menu != null) {
 
