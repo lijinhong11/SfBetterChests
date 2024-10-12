@@ -72,8 +72,7 @@ public class LocationRecorder extends SimpleSlimefunItem<ItemUseHandler> impleme
                         lore.add(Component.empty());
                         lore.add(newLore);
                     } else {
-                        lore.set(3, Component.empty());
-                        lore.set(4, newLore);
+                        lore.set(3, newLore);
                     }
 
                     meta.lore(lore);
