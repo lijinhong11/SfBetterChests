@@ -50,8 +50,7 @@ public class SimpleChest extends SlimefunItem implements InventoryBlock {
 
             private void drop(Block b) {
                 BlockMenu menu = BlockStorage.getInventory(b);
-                menu.dropItems(b.getLocation(), getInputSlots());
-                menu.dropItems(b.getLocation(), getOutputSlots());
+                menu.dropItems(b.getLocation(), getSlots());
 
                 World world = b.getWorld();
                 ItemStack item = getItem().clone();
@@ -68,11 +67,15 @@ public class SimpleChest extends SlimefunItem implements InventoryBlock {
 
     @Override
     public int[] getInputSlots() {
-        return IntStream.range(0, size).toArray();
+        return getSlots();
     }
 
     @Override
     public int[] getOutputSlots() {
         return getInputSlots();
+    }
+
+    protected int[] getSlots() {
+        return IntStream.range(0, size).toArray();
     }
 }

@@ -1,6 +1,7 @@
 package me.mmmjjkx.betterChests;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
 import me.mmmjjkx.betterChests.items.BCItems;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -16,6 +17,9 @@ public final class BetterChests extends JavaPlugin implements SlimefunAddon {
         BCItems.registerItems();
 
         getLogger().info("BetterChests has been enabled.");
+
+        BlobBuildUpdater updater = new BlobBuildUpdater(this, getFile(), "BetterChests");
+        updater.start();
     }
 
     @Override

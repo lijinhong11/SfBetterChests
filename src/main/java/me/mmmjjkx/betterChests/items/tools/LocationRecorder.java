@@ -14,6 +14,7 @@ import me.mmmjjkx.betterChests.BetterChests;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -62,14 +63,20 @@ public class LocationRecorder extends SimpleSlimefunItem<ItemUseHandler> impleme
 
                     Component newLore = LegacyComponentSerializer
                             .legacyAmpersand()
-                            .deserialize("&bX: &a" + loc.getBlockX() + " &bY: &a" + loc.getBlockY() + " &bZ: &a" + loc.getBlockZ());
+                            .deserialize("&bX: &a" + loc.getBlockX() + " &bY: &a" + loc.getBlockY() + " &bZ: &a" + loc.getBlockZ())
+                            .decoration(TextDecoration.ITALIC, false);
 
                     List<Component> lore = meta.lore();
 
-                    lore.add(3, Component.empty());
-                    lore.add(4,newLore);
-                    meta.lore(lore);
+                    if (lore.size() < 3) {
+                        lore.add(Component.empty());
+                        lore.add(newLore);
+                    } else {
+                        lore.set(3, Component.empty());
+                        lore.set(4, newLore);
+                    }
 
+                    meta.lore(lore);
                     self.setItemMeta(meta);
 
                     p.sendMessage("§aLocation recorded!");
