@@ -1,5 +1,5 @@
 name: BetterChests
-version: '${project.version}'
+version: 'Dev - ?'
 main: me.mmmjjkx.betterChests.BetterChests
 api-version: '1.18'
 depend: ["Slimefun"]

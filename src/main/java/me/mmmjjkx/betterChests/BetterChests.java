@@ -14,12 +14,17 @@ public final class BetterChests extends JavaPlugin implements SlimefunAddon {
     public void onEnable() {
         INSTANCE = this;
 
+        saveDefaultConfig();
+        saveConfig();
+
         BCItems.registerItems();
 
         getLogger().info("BetterChests has been enabled.");
 
-        BlobBuildUpdater updater = new BlobBuildUpdater(this, getFile(), "BetterChests");
-        updater.start();
+        if (getConfig().getBoolean("options.auto-update")) {
+            BlobBuildUpdater updater = new BlobBuildUpdater(this, getFile(), "BetterChests");
+            updater.start();
+        }
     }
 
     @Override

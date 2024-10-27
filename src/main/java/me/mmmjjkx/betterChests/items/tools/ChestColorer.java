@@ -6,8 +6,10 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Rechargeable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.BetterChests;
 import me.mmmjjkx.betterChests.items.chests.SimpleChest;
@@ -48,6 +50,14 @@ public class ChestColorer extends SimpleSlimefunItem<ItemUseHandler> implements 
             boolean cycle = p.isSneaking();
             ItemStack item = e.getItem();
 
+            Optional<Block> block = e.getClickedBlock();
+            if (block.isPresent()) {
+                if (!Slimefun.getProtectionManager().hasPermission(p, block.get(), Interaction.INTERACT_BLOCK)) {
+                    p.sendMessage("§cYou don't have permission to interact with this block.");
+                    return;
+                }
+            }
+
             if (cycle) {
                 int index = PersistentDataAPI.getOptionalInt(item.getItemMeta(), COLOR_KEY).orElse(DEFAULT_COLOR.ordinal());
 
@@ -71,7 +81,6 @@ public class ChestColorer extends SimpleSlimefunItem<ItemUseHandler> implements 
                 PersistentDataAPI.setInt(meta, COLOR_KEY, nextIndex);
                 item.setItemMeta(meta);
             } else {
-                Optional<Block> block = e.getClickedBlock();
                 if (block.isPresent()) {
                     Block b = block.get();
                     SlimefunItem sfItem = BlockStorage.check(b);

@@ -1,12 +1,15 @@
 package me.mmmjjkx.betterChests.items;
 
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.BetterChests;
 import me.mmmjjkx.betterChests.items.chests.OnlyInputChest;
 import me.mmmjjkx.betterChests.items.chests.OnlyOutputChest;
 import me.mmmjjkx.betterChests.items.chests.SimpleChest;
+import me.mmmjjkx.betterChests.items.chests.SimpleDrawer;
 import me.mmmjjkx.betterChests.items.machines.ChestDisassembler;
 import me.mmmjjkx.betterChests.items.tools.ChestColorer;
 import me.mmmjjkx.betterChests.items.tools.LocationRecorder;
@@ -14,6 +17,14 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public class BCItems {
+    private BCItems() {}
+
+    public static final SlimefunItem TIP = new SlimefunItem(
+            BCGroups.MAIN,
+            new SlimefunItemStack("BC_TTTTTTTTTTTTTTTTTTTTIP_ITEM", BCItemStacks.TIP),
+            RecipeType.NULL,
+            new ItemStack[9]);
+
     public static final LocationRecorder LOCATION_RECORDER = new LocationRecorder(
             new SlimefunItemStack("BC_LOCATION_RECORDER", BCItemStacks.LOCATION_RECORDER),
             RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -161,7 +172,108 @@ public class BCItems {
                     new ItemStack(Material.RED_DYE), new ItemStack(Material.REDSTONE_BLOCK), new ItemStack(Material.YELLOW_DYE)
             });
 
+    public static final SimpleDrawer DRAWER_1 = new SimpleDrawer(
+            new SlimefunItemStack("BC_DRAWER_1", BCItemStacks.DRAWER_1),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    new ItemStack(Material.OAK_LOG), new ItemStack(Material.OAK_PLANKS), new ItemStack(Material.OAK_LOG),
+                    new ItemStack(Material.OAK_PLANKS), new ItemStack(Material.CHEST), new ItemStack(Material.OAK_PLANKS),
+                    new ItemStack(Material.OAK_LOG), new ItemStack(Material.LEVER), new ItemStack(Material.OAK_LOG)
+            }, 1024);
+
+    public static final SimpleDrawer DRAWER_2 = new SimpleDrawer(
+            new SlimefunItemStack("BC_DRAWER_2", BCItemStacks.DRAWER_2),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    new ItemStack(Material.OAK_LOG), new ItemStack(Material.CHEST), new ItemStack(Material.OAK_LOG),
+                    new ItemStack(Material.CHEST), DRAWER_1.getItem().clone(), new ItemStack(Material.CHEST),
+                    new ItemStack(Material.OAK_LOG), new ItemStack(Material.LEVER), new ItemStack(Material.OAK_LOG)
+            }, 4096);
+
+    public static final SimpleDrawer DRAWER_3 = new SimpleDrawer(
+            new SlimefunItemStack("BC_DRAWER_3", BCItemStacks.DRAWER_3),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    new ItemStack(Material.IRON_INGOT), new ItemStack(Material.CHEST), new ItemStack(Material.IRON_INGOT),
+                    new ItemStack(Material.CHEST), DRAWER_2.getItem().clone(), new ItemStack(Material.CHEST),
+                    new ItemStack(Material.IRON_INGOT), new ItemStack(Material.LEVER), new ItemStack(Material.IRON_INGOT)
+            }, 16384);
+
+    public static final SimpleDrawer DRAWER_4 = new SimpleDrawer(
+            new SlimefunItemStack("BC_DRAWER_4", BCItemStacks.DRAWER_4),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    new ItemStack(Material.DIAMOND), new ItemStack(Material.DIAMOND), new ItemStack(Material.DIAMOND),
+                    CHEST_36.getItem().clone(), DRAWER_3.getItem().clone(), CHEST_36.getItem().clone(),
+                    new ItemStack(Material.DIAMOND), new ItemStack(Material.LEVER), new ItemStack(Material.DIAMOND)
+            }, 262_000);
+
+    public static final SimpleDrawer DRAWER_5 = new SimpleDrawer(
+            new SlimefunItemStack("BC_DRAWER_5", BCItemStacks.DRAWER_5),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    SlimefunItems.SYNTHETIC_DIAMOND.clone(), SlimefunItems.SYNTHETIC_DIAMOND.clone(), SlimefunItems.SYNTHETIC_DIAMOND.clone(),
+                    CHEST_45.getItem().clone(), DRAWER_4.getItem().clone(), CHEST_45.getItem().clone(),
+                    SlimefunItems.SYNTHETIC_SAPPHIRE.clone(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_SAPPHIRE.clone()
+            }, 1_000_000);
+
+    public static final SimpleDrawer DRAWER_6 = new SimpleDrawer(
+            new SlimefunItemStack("BC_DRAWER_6", BCItemStacks.DRAWER_6),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    SlimefunItems.HARDENED_METAL_INGOT.clone(), SlimefunItems.HARDENED_METAL_INGOT.clone(), SlimefunItems.HARDENED_METAL_INGOT.clone(),
+                    CHEST_54.getItem().clone(), DRAWER_5.getItem().clone(), CHEST_54.getItem().clone(),
+                    SlimefunItems.SYNTHETIC_EMERALD.clone(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_EMERALD.clone()
+            }, 4_000_000);
+
+    public static final SimpleDrawer DRAWER_7 = new SimpleDrawer(
+            new SlimefunItemStack("BC_DRAWER_7", BCItemStacks.DRAWER_7),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    SlimefunItems.REINFORCED_ALLOY_INGOT.clone(), SlimefunItems.BLISTERING_INGOT.clone(), SlimefunItems.REINFORCED_ALLOY_INGOT.clone(),
+                    CHEST_54.getItem().clone(), DRAWER_6.getItem().clone(), CHEST_54.getItem().clone(),
+                    SlimefunItems.SYNTHETIC_EMERALD.clone(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_EMERALD.clone()
+            }, 16_000_000);
+
+    public static final SimpleDrawer DRAWER_8 = new SimpleDrawer(
+            new SlimefunItemStack("BC_DRAWER_8", BCItemStacks.DRAWER_8),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.BLISTERING_INGOT_2.clone(), SlimefunItems.REINFORCED_PLATE.clone(),
+                    CHEST_54.getItem().clone(), DRAWER_7.getItem().clone(), CHEST_54.getItem().clone(),
+                    SlimefunItems.SYNTHETIC_EMERALD.clone(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_EMERALD.clone()
+            }, 64_000_000);
+
+    public static final SimpleDrawer DRAWER_9 = new SimpleDrawer(
+            new SlimefunItemStack("BC_DRAWER_9", BCItemStacks.DRAWER_9),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.BLISTERING_INGOT_3.clone(), SlimefunItems.REINFORCED_PLATE.clone(),
+                    CHEST_54.getItem().clone(), DRAWER_8.getItem().clone(), CHEST_54.getItem().clone(),
+                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.REDSTONE_ALLOY.clone(), SlimefunItems.REINFORCED_PLATE.clone()
+            }, 256_000_000);
+
+    public static final SimpleDrawer DRAWER_10 = new SimpleDrawer(
+            new SlimefunItemStack("BC_DRAWER_10", BCItemStacks.DRAWER_10),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.BLISTERING_INGOT_3.clone(), SlimefunItems.REINFORCED_PLATE.clone(),
+                    CHEST_54.getItem().clone(), DRAWER_9.getItem().clone(), CHEST_54.getItem().clone(),
+                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.REDSTONE_ALLOY.clone(), SlimefunItems.REINFORCED_PLATE.clone()
+            }, 1_000_000_000);
+
+    public static final SimpleDrawer DRAWER_MAX = new SimpleDrawer(
+            new SlimefunItemStack("BC_DRAWER_MAX", BCItemStacks.DRAWER_MAX),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.BLISTERING_INGOT_3.clone(), SlimefunItems.REINFORCED_PLATE.clone(),
+                    CHEST_54.getItem().clone(), DRAWER_10.getItem().clone(), CHEST_54.getItem().clone(),
+                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.REDSTONE_ALLOY.clone(), SlimefunItems.REINFORCED_PLATE.clone()
+            }, 2_140_000_000);
+
     public static void registerItems() {
+        TIP.register(BetterChests.INSTANCE);
+
         LOCATION_RECORDER.register(BetterChests.INSTANCE);
         CHEST_COLORER.register(BetterChests.INSTANCE);
 
@@ -181,5 +293,17 @@ public class BCItems {
         CHEST_OUTPUT_54.register(BetterChests.INSTANCE);
 
         CHEST_DISASSEMBLER.register(BetterChests.INSTANCE);
+
+        DRAWER_1.register(BetterChests.INSTANCE);
+        DRAWER_2.register(BetterChests.INSTANCE);
+        DRAWER_3.register(BetterChests.INSTANCE);
+        DRAWER_4.register(BetterChests.INSTANCE);
+        DRAWER_5.register(BetterChests.INSTANCE);
+        DRAWER_6.register(BetterChests.INSTANCE);
+        DRAWER_7.register(BetterChests.INSTANCE);
+        DRAWER_8.register(BetterChests.INSTANCE);
+        DRAWER_9.register(BetterChests.INSTANCE);
+        DRAWER_10.register(BetterChests.INSTANCE);
+        DRAWER_MAX.register(BetterChests.INSTANCE);
     }
 }
