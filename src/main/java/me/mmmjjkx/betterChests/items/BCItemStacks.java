@@ -7,7 +7,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class BCItemStacks {
     public static final ItemStack TIP = new CustomItemStack(Material.PAPER, "&6&lTip",
-            "&c&lDon't place too many drawers in one chunk! The drawers will spawn 3 entities once they were placed.");
+            "&c&lDon't place too many drawers in one chunk! ",
+            "The drawers will spawn 3 entities once they were placed.");
 
     public static final ItemStack GROUP_MAIN_ITEM = new CustomItemStack(Material.CHEST, "&6&lBetter Chests");
 
