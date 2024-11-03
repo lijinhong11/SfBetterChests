@@ -36,7 +36,7 @@ public class LocationRecorder extends SimpleSlimefunItem<ItemUseHandler> impleme
     private static final NamespacedKey Z = new NamespacedKey(BetterChests.INSTANCE, "pos_z");
 
     public LocationRecorder(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(BCGroups.MAIN, item, recipeType, recipe);
+        super(BCGroups.TOOLS, item, recipeType, recipe);
     }
 
     @Override

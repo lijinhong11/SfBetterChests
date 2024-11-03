@@ -24,7 +24,7 @@ public class SimpleChest extends SlimefunItem implements InventoryBlock {
     private final int size;
 
     public SimpleChest(int size, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(BCGroups.MAIN, item, recipeType, recipe);
+        super(BCGroups.STORAGES, item, recipeType, recipe);
 
         this.size = size;
 

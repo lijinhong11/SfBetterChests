@@ -17,7 +17,10 @@ import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.BetterChests;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TranslatableComponent;
-import org.bukkit.*;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.TileState;
@@ -51,7 +54,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
     private final int capacity;
 
     public SimpleDrawer(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, int capacity) {
-        super(BCGroups.MAIN, item, recipeType, recipe);
+        super(BCGroups.STORAGES, item, recipeType, recipe);
 
         this.capacity = capacity;
 
@@ -287,7 +290,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
                         }
                     }
             );
-            
+
             ItemDisplay item = itemA.get();
             TextDisplay itemName = itemNameA.get();
             TextDisplay itemCount = itemCountA.get();
@@ -400,6 +403,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
 
     /**
      * Get the capacity of the drawer.
+     *
      * @return the capacity of the drawer.
      */
     public int getCapacity() {
@@ -409,8 +413,9 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
     /**
      * Add items to the drawer.
      * (For hooks)
+     *
      * @param barrelLoc the location of the drawer
-     * @param item the item to add
+     * @param item      the item to add
      * @return a pair of a boolean indicating <b>whether the item was added</b> and <b>an integer indicating the remaining number of items in the drawer</b>.
      */
     public Pair<Boolean, Integer> addItem(Location barrelLoc, ItemStack item) {
@@ -482,6 +487,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
     /**
      * Get the item currently being stored in the drawer.
      * (For hooks)
+     *
      * @param barrelLoc the location of the drawer
      * @return the item being stored, or null if there is no item.
      */
@@ -497,8 +503,9 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
     /**
      * Take items from the drawer.
      * (For hooks)
+     *
      * @param barrelLoc the location of the drawer
-     * @param count the number of items to take
+     * @param count     the number of items to take
      * @return the item taken, or null if there is no item or less than the specified number of items in the drawer.
      */
     @CanIgnoreReturnValue
@@ -548,5 +555,6 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
         return copy;
     }
 
-    private record EntityContainer(ItemDisplay item, TextDisplay itemName, TextDisplay itemCount) { }
+    private record EntityContainer(ItemDisplay item, TextDisplay itemName, TextDisplay itemCount) {
+    }
 }

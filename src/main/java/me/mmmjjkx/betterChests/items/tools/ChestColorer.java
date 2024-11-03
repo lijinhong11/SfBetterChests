@@ -33,7 +33,7 @@ public class ChestColorer extends SimpleSlimefunItem<ItemUseHandler> implements 
     private static final NamespacedKey COLOR_KEY = new NamespacedKey(BetterChests.INSTANCE, "color");
 
     public ChestColorer(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(BCGroups.MAIN, item, recipeType, recipe);
+        super(BCGroups.TOOLS, item, recipeType, recipe);
     }
 
     @Override

@@ -1,6 +1,6 @@
 name: BetterChests
 version: 'Dev - ?'
 main: me.mmmjjkx.betterChests.BetterChests
-api-version: '1.18'
+api-version: '1.19'
 depend: ["Slimefun"]
 author: "mmmjjkx"

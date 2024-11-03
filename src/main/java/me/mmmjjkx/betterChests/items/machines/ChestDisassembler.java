@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ChestDisassembler extends AContainer implements RecipeDisplayItem {
     public ChestDisassembler(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(BCGroups.MAIN, item, recipeType, recipe);
+        super(BCGroups.TOOLS, item, recipeType, recipe);
 
         setProcessingSpeed(1);
     }
@@ -28,7 +28,7 @@ public class ChestDisassembler extends AContainer implements RecipeDisplayItem {
                 new ItemStack[]{
                         new ItemStack(Material.CHEST, 1),
                         new ItemStack(Material.OAK_PLANKS, 2)
-        });
+                });
 
         registerRecipe(5,
                 new ItemStack[]{BCItems.CHEST_36.getItem().clone()},
@@ -56,56 +56,56 @@ public class ChestDisassembler extends AContainer implements RecipeDisplayItem {
                 new ItemStack[]{
                         new ItemStack(Material.CHEST, 1),
                         new ItemStack(Material.HOPPER, 1)
-        });
+                });
 
         registerRecipe(5,
                 new ItemStack[]{BCItems.CHEST_INPUT_36.getItem().clone()},
                 new ItemStack[]{
                         new ItemStack(Material.CHEST, 1),
                         new ItemStack(Material.HOPPER, 1)
-        });
+                });
 
         registerRecipe(5,
                 new ItemStack[]{BCItems.CHEST_INPUT_45.getItem().clone()},
                 new ItemStack[]{
                         new ItemStack(Material.CHEST, 1),
                         new ItemStack(Material.HOPPER, 1)
-        });
+                });
 
         registerRecipe(5,
                 new ItemStack[]{BCItems.CHEST_INPUT_54.getItem().clone()},
                 new ItemStack[]{
                         new ItemStack(Material.CHEST, 1),
                         new ItemStack(Material.HOPPER, 1)
-        });
+                });
 
         registerRecipe(5,
                 new ItemStack[]{BCItems.CHEST_OUTPUT_27.getItem().clone()},
                 new ItemStack[]{
                         new ItemStack(Material.CHEST, 1),
                         new ItemStack(Material.HOPPER, 1)
-        });
+                });
 
         registerRecipe(5,
                 new ItemStack[]{BCItems.CHEST_OUTPUT_36.getItem().clone()},
                 new ItemStack[]{
                         new ItemStack(Material.CHEST, 1),
                         new ItemStack(Material.HOPPER, 1)
-        });
+                });
 
         registerRecipe(5,
                 new ItemStack[]{BCItems.CHEST_OUTPUT_45.getItem().clone()},
                 new ItemStack[]{
                         new ItemStack(Material.CHEST, 1),
                         new ItemStack(Material.HOPPER, 1)
-        });
+                });
 
         registerRecipe(5,
                 new ItemStack[]{BCItems.CHEST_OUTPUT_54.getItem().clone()},
                 new ItemStack[]{
                         new ItemStack(Material.CHEST, 1),
                         new ItemStack(Material.HOPPER, 1)
-        });
+                });
     }
 
     @Override
