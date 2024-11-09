@@ -15,8 +15,9 @@ public class BCItemStacks {
     public static final ItemStack GROUP_STORAGE_ITEM = new CustomItemStack(Material.BARREL, "&a&lStorages");
     public static final ItemStack GROUP_TOOL_ITEM = new CustomItemStack(Material.BLAZE_ROD, "&b&lTools & Machines");
     public static final ItemStack GROUP_MATERIAL_ITEM = new CustomItemStack(Material.IRON_INGOT, "&b&lMaterials");
+    public static final ItemStack GROUP_CARGO_ITEM = new CustomItemStack(Material.CHEST, "&e&lCargo");
 
-    public static final ItemStack GEAR_WHEEL = new CustomItemStack(Material.REDSTONE, "&aGear Wheel", "&7A tool for crafting");
+    public static final ItemStack GEAR_WHEEL = new CustomItemStack(Material.REDSTONE, "&aGear Wheel", "&7A thing for crafting BC's things");
     public static final ItemStack TIGHTLY_BLISTERING_INGOT = new CustomItemStack(Material.IRON_INGOT, "&eTightly Blistering Ingot", "&7A high-hardness metal", LoreBuilder.radioactive(Radioactivity.VERY_HIGH));
     public static final ItemStack TIGHTLY_BLISTERING_PLATE = new CustomItemStack(Material.IRON_BLOCK, "&eTightly Blistering Plate", "&7A high-hardness metal plate", LoreBuilder.radioactive(Radioactivity.HIGH));
 
@@ -45,4 +46,8 @@ public class BCItemStacks {
     public static final ItemStack IE_STORAGE_UNIT_6 = new CustomItemStack(Material.MANGROVE_LOG, "&eIE Storage Unit &6Lvl 6", "&bInfinityExpansion-like storage unit", "&dCapacity: 256,000,000");
     public static final ItemStack IE_STORAGE_UNIT_7 = new CustomItemStack(Material.CRIMSON_STEM, "&eIE Storage Unit &6Lvl 7", "&bInfinityExpansion-like storage unit", "&dCapacity: 1,000,000,000");
     public static final ItemStack IE_STORAGE_UNIT_8 = new CustomItemStack(Material.WARPED_STEM, "&eIE Storage Unit &6Lvl 8", "&bInfinityExpansion-like storage unit", "&dCapacity: 2,140,000,000");
+
+    public static final ItemStack NETWORKS_DRAWER_PUSHER = new CustomItemStack(Material.BROWN_STAINED_GLASS, "&aNetwork Drawer Pusher", "&b&lPush items into BC's drawers");
+    public static final ItemStack NETWORKS_DRAWER_GRABBER = new CustomItemStack(Material.ORANGE_STAINED_GLASS, "&aNetwork Drawer Grabber", "&b&lGrab items from BC's drawers");
+    public static final ItemStack POINT_TO_POINT_TRANSFER = new CustomItemStack(Material.END_ROD, "&aPoint-to-Point Transfer", "&b&lA great tool for transferring items between two blocks");
 }

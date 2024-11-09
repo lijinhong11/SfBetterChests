@@ -13,6 +13,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.Persis
 import io.github.thebusybiscuit.slimefun4.libraries.dough.inventory.InvUtils;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import it.unimi.dsi.fastutil.Pair;
+import lombok.Getter;
 import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.BetterChests;
 import net.kyori.adventure.text.Component;
@@ -24,6 +25,7 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.TileState;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TextDisplay;
@@ -51,9 +53,13 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
     private final NamespacedKey FACING = new NamespacedKey(BetterChests.INSTANCE, "drawer_facing");
 
     private final Map<Location, EntityContainer> entities = new HashMap<>();
-    private final int capacity;
+    /**
+     *  Get the capacity of the drawer.
+     */
+    @Getter
+    private final long capacity;
 
-    public SimpleDrawer(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, int capacity) {
+    public SimpleDrawer(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, long capacity) {
         super(BCGroups.STORAGES, item, recipeType, recipe);
 
         this.capacity = capacity;
@@ -161,7 +167,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
                     return;
                 }
 
-                int count = Integer.parseInt(Objects.requireNonNullElse(container.itemCount.getText(), "0"));
+                long count = Long.parseLong(Objects.requireNonNullElse(container.itemCount.getText(), "0"));
 
                 if (count == 0) {
                     container.itemName.text(getItemName(handItem));
@@ -183,7 +189,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
                         p.sendMessage("§cThis drawer is full.");
                         return;
                     } else if (count + toAdd > capacity) {
-                        toAdd = capacity - count;
+                        toAdd = (int) (capacity - count);
                     }
 
                     handItem.setAmount(handCount - toAdd);
@@ -206,8 +212,8 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
                 Location itemLoc = e.getBlock().getLocation();
                 Block block = e.getBlock();
 
+                tryGetContainer(itemLoc);
                 EntityContainer container = entities.remove(itemLoc);
-                container = container == null ? tryGetContainer(itemLoc) : container;
 
                 World w = block.getWorld();
 
@@ -249,7 +255,15 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
         });
     }
 
-    private void storeItem(final Location barrelLoc, ItemStack item, int count) {
+    public static Component getItemName(ItemStack item) {
+        Component name = item.displayName();
+        if (name instanceof TranslatableComponent tc) {
+            return tc.args().get(0);
+        }
+        return name;
+    }
+
+    private void storeItem(final Location barrelLoc, ItemStack item, long count) {
         Block block = barrelLoc.getBlock();
         block.setMetadata("bc_drawer_item", new FixedMetadataValue(BetterChests.INSTANCE, item));
         block.setMetadata("bc_drawer_count", new FixedMetadataValue(BetterChests.INSTANCE, count));
@@ -258,38 +272,49 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
     private EntityContainer tryGetContainer(final Location barrelLoc) {
         Block block = barrelLoc.getBlock();
         if (entities.get(barrelLoc) != null) {
-            return entities.get(barrelLoc);
+            EntityContainer container = entities.get(barrelLoc);
+            if (!container.chunkLoaded()) {
+                entities.remove(barrelLoc);
+                long count = Long.parseLong(Objects.requireNonNullElse(container.itemCount.getText(), "0"));
+                block.removeMetadata("bc_drawer_count", BetterChests.INSTANCE);
+                block.setMetadata("bc_drawer_count", new FixedMetadataValue(BetterChests.INSTANCE, count)); // re-sync count
+                return tryGetContainer(barrelLoc);
+            }
+            return container;
         } else {
             AtomicReference<ItemDisplay> itemA = new AtomicReference<>();
             AtomicReference<TextDisplay> itemNameA = new AtomicReference<>();
             AtomicReference<TextDisplay> itemCountA = new AtomicReference<>();
-            block.getWorld().getEntities().forEach(
-                    e -> {
-                        if (!(block.getState() instanceof TileState st)) {
-                            return;
-                        }
 
-                        if (e instanceof ItemDisplay && PersistentDataAPI.hasString(e, ITEM_ENTITY)) {
-                            UUID itemUUID = UUID.fromString(PersistentDataAPI.getString(e, ITEM_ENTITY, ""));
-                            UUID itemUUIDBlock = UUID.fromString(PersistentDataAPI.getString(st, ITEM_ENTITY, ""));
-                            if (itemUUID.equals(itemUUIDBlock)) {
-                                itemA.set((ItemDisplay) e);
-                            }
-                        } else if (e instanceof TextDisplay && PersistentDataAPI.hasString(e, NAME_ENTITY)) {
-                            UUID itemNameUUID = UUID.fromString(PersistentDataAPI.getString(e, NAME_ENTITY, ""));
-                            UUID itemNameUUIDBlock = UUID.fromString(PersistentDataAPI.getString(st, NAME_ENTITY, ""));
-                            if (itemNameUUID.equals(itemNameUUIDBlock)) {
-                                itemNameA.set((TextDisplay) e);
-                            }
-                        } else if (e instanceof TextDisplay && PersistentDataAPI.hasString(e, COUNT_ENTITY)) {
-                            UUID countEntityUUID = UUID.fromString(PersistentDataAPI.getString(e, COUNT_ENTITY, ""));
-                            UUID countEntityUUIDBlock = UUID.fromString(PersistentDataAPI.getString(st, COUNT_ENTITY, ""));
-                            if (countEntityUUID.equals(countEntityUUIDBlock)) {
-                                itemCountA.set((TextDisplay) e);
-                            }
-                        }
+            if (!block.getChunk().isEntitiesLoaded()) {
+                block.getChunk().load();
+            }
+
+            for (Entity e : block.getChunk().getEntities()) {
+                if (!(block.getState() instanceof TileState st)) {
+                    continue;
+                }
+
+                if (e instanceof ItemDisplay && PersistentDataAPI.hasString(e, ITEM_ENTITY)) {
+                    UUID itemUUID = UUID.fromString(PersistentDataAPI.getString(e, ITEM_ENTITY, ""));
+                    UUID itemUUIDBlock = UUID.fromString(PersistentDataAPI.getString(st, ITEM_ENTITY, ""));
+                    if (itemUUID.equals(itemUUIDBlock)) {
+                        itemA.set((ItemDisplay) e);
                     }
-            );
+                } else if (e instanceof TextDisplay && PersistentDataAPI.hasString(e, NAME_ENTITY)) {
+                    UUID itemNameUUID = UUID.fromString(PersistentDataAPI.getString(e, NAME_ENTITY, ""));
+                    UUID itemNameUUIDBlock = UUID.fromString(PersistentDataAPI.getString(st, NAME_ENTITY, ""));
+                    if (itemNameUUID.equals(itemNameUUIDBlock)) {
+                        itemNameA.set((TextDisplay) e);
+                    }
+                } else if (e instanceof TextDisplay && PersistentDataAPI.hasString(e, COUNT_ENTITY)) {
+                    UUID countEntityUUID = UUID.fromString(PersistentDataAPI.getString(e, COUNT_ENTITY, ""));
+                    UUID countEntityUUIDBlock = UUID.fromString(PersistentDataAPI.getString(st, COUNT_ENTITY, ""));
+                    if (countEntityUUID.equals(countEntityUUIDBlock)) {
+                        itemCountA.set((TextDisplay) e);
+                    }
+                }
+            }
 
             ItemDisplay item = itemA.get();
             TextDisplay itemName = itemNameA.get();
@@ -364,13 +389,15 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
         MetadataValue itemStack = getMetadata(block, "bc_drawer_item");
         if (itemStack != null) {
             ItemStack itemStackValue = (ItemStack) itemStack.value();
-            item.setItemStack(itemStackValue);
-            itemName.text(getItemName(itemStackValue));
+            if (itemStackValue != null && itemStackValue.getType() != Material.AIR) {
+                item.setItemStack(itemStackValue);
+                itemName.text(getItemName(itemStackValue));
+            }
         }
 
         MetadataValue countValue = getMetadata(block, "bc_drawer_count");
         if (countValue != null) {
-            itemCount.text(Component.text(String.valueOf(countValue.asInt())));
+            itemCount.text(Component.text(String.valueOf(countValue.asLong())));
         }
     }
 
@@ -388,26 +415,9 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
         };
     }
 
-    private Component getItemName(ItemStack item) {
-        Component name = item.displayName();
-        if (name instanceof TranslatableComponent tc) {
-            return tc.args().get(0);
-        }
-        return name;
-    }
-
     private MetadataValue getMetadata(Metadatable m, String key) {
         List<MetadataValue> metadata = m.getMetadata(key);
         return metadata.isEmpty() ? null : metadata.get(0);
-    }
-
-    /**
-     * Get the capacity of the drawer.
-     *
-     * @return the capacity of the drawer.
-     */
-    public int getCapacity() {
-        return capacity;
     }
 
     /**
@@ -439,7 +449,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
             container.itemName.text(getItemName(item));
             container.itemCount.text(Component.text(item.getAmount()));
 
-            int toAdd = Math.min(item.getAmount(), capacity);
+            int toAdd = (int) Math.min(item.getAmount(), capacity > Integer.MAX_VALUE ? Integer.MAX_VALUE : capacity);
             item.setAmount(item.getAmount() - toAdd);
 
             if (item.getAmount() < 1) {
@@ -456,21 +466,19 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
             return Pair.of(false, 0);
         }
 
-        int drawerCount = 0;
+        long drawerCount = 0;
 
         MetadataValue countValue = getMetadata(barrelLoc.getBlock(), "bc_drawer_count");
         if (countValue != null) {
-            drawerCount = countValue.asInt();
+            drawerCount = countValue.asLong();
         }
 
-        int maxStackSize = drawerItem.getMaxStackSize();
-        int toAdd = Math.min(item.getAmount(), maxStackSize - drawerCount);
+        int toAdd = item.getAmount();
 
         if (drawerCount + toAdd > capacity) {
-            toAdd = capacity - drawerCount;
+            toAdd = (int) (capacity - drawerCount);
         }
 
-        drawerItem.setAmount(drawerCount + toAdd);
         item.setAmount(item.getAmount() - toAdd);
 
         if (item.getAmount() < 1) {
@@ -489,7 +497,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
      * (For hooks)
      *
      * @param barrelLoc the location of the drawer
-     * @return the item being stored, or null if there is no item.
+     * @return the item being stored (the amount is not included), or null if there is no item.
      */
     public ItemStack getStoringItem(Location barrelLoc) {
         MetadataValue theItem = getMetadata(barrelLoc.getBlock(), "bc_drawer_item");
@@ -497,7 +505,50 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
             return null;
         }
 
-        return (ItemStack) theItem.value();
+        ItemStack item = (ItemStack) theItem.value();
+        if (item == null || item.getType() == Material.AIR) {
+            return null;
+        }
+
+        return item.asOne();
+    }
+
+    /**
+     * Get the count of the item currently being stored in the drawer.
+     * (For hooks)
+     *
+     * @param barrelLoc the location of the drawer
+     * @return the count of the item being stored, or 0 if there is no item.
+     */
+    public long getStoringItemCount(Location barrelLoc) {
+        Block block = barrelLoc.getBlock();
+        if (entities.get(barrelLoc) == null || getMetadata(block, "bc_drawer_item") == null) {
+            return 0;
+        }
+
+        MetadataValue countValue = getMetadata(block, "bc_drawer_count");
+        EntityContainer container = entities.get(barrelLoc);
+
+        if (container == null) {
+            return countValue != null ? countValue.asLong() : 0;
+        }
+
+        if (container.itemCount == null) {
+            tryGetContainer(barrelLoc);
+            container = entities.get(barrelLoc);
+            String text = container.itemCount.getText();
+            if (text == null) {
+                return 0;
+            }
+            return Long.parseLong(text);
+        }
+
+        String text = container.itemCount.getText();
+        if (text == null) {
+            return 0;
+        }
+
+        return Long.parseLong(text);
     }
 
     /**
@@ -521,7 +572,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
         }
 
         if (count < 1) {
-            return null; //is anyone will take negative amount or zero amount of items?
+            return null; //Will anyone take a negative amount or zero numbers of items?
         }
 
         int itemCount = 0;
@@ -556,5 +607,8 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
     }
 
     private record EntityContainer(ItemDisplay item, TextDisplay itemName, TextDisplay itemCount) {
+        boolean chunkLoaded() {
+            return item.getChunk().isLoaded() && item.isValid();
+        }
     }
 }

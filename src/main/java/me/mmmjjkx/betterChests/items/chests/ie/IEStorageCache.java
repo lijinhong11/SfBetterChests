@@ -146,6 +146,10 @@ public final class IEStorageCache {
         updateStatus();
     }
 
+    public long getStored() {
+        return this.amount;
+    }
+
     private static boolean checkWallSign(Block sign, Block block) {
         return SlimefunTag.WALL_SIGNS.isTagged(sign.getType())
                 && sign.getRelative(((WallSign) sign.getBlockData()).getFacing().getOppositeFace()).equals(block);

@@ -1,5 +1,6 @@
 package me.mmmjjkx.betterChests.items;
 
+import io.github.sefiraat.networks.slimefun.NetworksSlimefunItemStacks;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -8,6 +9,9 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.RadioactiveItem;
 import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.BetterChests;
+import me.mmmjjkx.betterChests.items.cargo.NetworksDrawerGrabber;
+import me.mmmjjkx.betterChests.items.cargo.NetworksDrawerPusher;
+import me.mmmjjkx.betterChests.items.cargo.P2PTransfer;
 import me.mmmjjkx.betterChests.items.chests.OnlyInputChest;
 import me.mmmjjkx.betterChests.items.chests.OnlyOutputChest;
 import me.mmmjjkx.betterChests.items.chests.SimpleChest;
@@ -16,6 +20,7 @@ import me.mmmjjkx.betterChests.items.chests.ie.IEStorageUnit;
 import me.mmmjjkx.betterChests.items.machines.ChestDisassembler;
 import me.mmmjjkx.betterChests.items.tools.ChestColorer;
 import me.mmmjjkx.betterChests.items.tools.LocationRecorder;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -356,6 +361,11 @@ public class BCItems {
                     SlimefunItems.ELECTRIC_MOTOR.clone(), SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.ANDROID_MEMORY_CORE.clone()
             });
 
+    // Cargo
+    public static final P2PTransfer POINT_TO_POINT_TRANSFER = new P2PTransfer(
+            new SlimefunItemStack("BC_POINT_TO_POINT_TRANSFER", BCItemStacks.POINT_TO_POINT_TRANSFER),
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{});
 
     private BCItems() {
     }
@@ -406,5 +416,25 @@ public class BCItems {
         IE_STORAGE_UNIT_6.register(BetterChests.INSTANCE);
         IE_STORAGE_UNIT_7.register(BetterChests.INSTANCE);
         IE_STORAGE_UNIT_8.register(BetterChests.INSTANCE);
+
+        if (Bukkit.getPluginManager().isPluginEnabled("Networks")) {
+            new NetworksDrawerPusher(
+                    new SlimefunItemStack("BC_NETWORKS_DRAWER_PUSHER", BCItemStacks.NETWORKS_DRAWER_PUSHER),
+                    RecipeType.ENHANCED_CRAFTING_TABLE,
+                    new ItemStack[]{
+                            null, NetworksSlimefunItemStacks.NETWORK_BRIDGE.clone(), null,
+                            null, NetworksSlimefunItemStacks.NETWORK_PUSHER.clone(), null,
+                            null, GEAR_WHEEL.getItem().clone(), null
+                    }).register(BetterChests.INSTANCE);
+
+            new NetworksDrawerGrabber(
+                    new SlimefunItemStack("BC_NETWORKS_DRAWER_GRABBER", BCItemStacks.NETWORKS_DRAWER_GRABBER),
+                    RecipeType.ENHANCED_CRAFTING_TABLE,
+                    new ItemStack[]{
+                            null, NetworksSlimefunItemStacks.NETWORK_BRIDGE.clone(), null,
+                            null, NetworksSlimefunItemStacks.NETWORK_GRABBER.clone(), null,
+                            null, GEAR_WHEEL.getItem().clone(), null
+                    }).register(BetterChests.INSTANCE);
+        }
     }
 }

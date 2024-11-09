@@ -68,11 +68,9 @@ public class LocationRecorder extends SimpleSlimefunItem<ItemUseHandler> impleme
 
                     List<Component> lore = meta.lore();
 
-                    if (lore.size() < 3) {
+                    if (lore != null && lore.size() < 3) {
                         lore.add(Component.empty());
                         lore.add(newLore);
-                    } else {
-                        lore.set(3, newLore);
                     }
 
                     meta.lore(lore);
@@ -103,6 +101,7 @@ public class LocationRecorder extends SimpleSlimefunItem<ItemUseHandler> impleme
 
                         SlimefunItem item = BlockStorage.check(loc);
                         if (item != null && item.getId().equals("NTW_GRID")) {
+                            p.sendMessage("§cYou cannot record a location of a Networks Grid.");
                             return; // Networks already had remote accessor
                         }
 

@@ -3,4 +3,5 @@ version: 'Dev - ?'
 main: me.mmmjjkx.betterChests.BetterChests
 api-version: '1.19'
 depend: ["Slimefun"]
+softdepend: ["SlimeHUD", "Networks"]
 author: "mmmjjkx"

@@ -1,0 +1,40 @@
+groups:
+  main: "&6&lBetter Chests"
+  storages: "&a&lStorages"
+  tool_machines: "&b&lTools & Machines"
+  materials: "&3&lMaterials"
+  cargo: "&e&lCargo"
+items:
+  tip:
+    name: "&bTip"
+    lore:
+    - "&c&lDon't place too many drawers in one chunk!"
+    - "&c&lThe drawers will spawn 3 entities once they were placed."
+    - "&c&lYou might losing some items if you place too many drawers in one chunk."
+  gear_wheel:
+    name: "&bGear Wheel"
+    lore:
+      - "&7A thing for crafting BC's things"
+  tightly_blistering_ingot:
+    name: "&eTightly Blistering Ingot"
+    lore:
+      - "&7A high-hardness metal"
+  tightly_blistering_plate:
+    name: "&eTightly Blistering Plate"
+    lore:
+      - "&7A high-hardness metal plate"
+  drawer:
+    name_lvl: "&bDrawer &aLv. &6%lvl%"
+    name_max: "&bDrawer &aLv. &6MAX"
+    lore:
+      - "&bRight-click grab 64 items (when your hand is empty)"
+      - "&bRight-click to store items that you hand in"
+      - "&dCapacity: %capacity%"
+  infinity_expansion_like_storage:
+    name_lvl: "&bInfinity Expansion-like Storage &aLv. &6%lvl%"
+    name_max: "&bInfinity Expansion-like Storage &aLv. &6MAX"
+    lore:
+      - "&bInfinityExpansion-like storage unit"
+      - "&dCapacity: %capacity%"
+    status: "&aStatus"
+    error: "&c&lERROR"

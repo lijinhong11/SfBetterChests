@@ -212,6 +212,10 @@ public final class IEStorageUnit extends SlimefunItem implements InventoryBlock,
         }
     }
 
+    public long getCapacity() {
+        return max;
+    }
+
     @Nullable
     private static Pair<ItemStack, Integer> loadFromStack(ItemStack source) {
         if (source.hasItemMeta()) {
