@@ -265,7 +265,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
 
     private void storeItem(final Location barrelLoc, ItemStack item, long count) {
         Block block = barrelLoc.getBlock();
-        block.setMetadata("bc_drawer_item", new FixedMetadataValue(BetterChests.INSTANCE, item));
+        block.setMetadata("bc_drawer_item", new FixedMetadataValue(BetterChests.INSTANCE, item.asOne()));
         block.setMetadata("bc_drawer_count", new FixedMetadataValue(BetterChests.INSTANCE, count));
     }
 
@@ -409,7 +409,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
     private Location getLocation(Location barrelLoc, BlockFace facing) {
         return switch (facing) {
             case SOUTH -> barrelLoc.clone().add(0.5, 0.5, -0.002);
-            case WEST -> barrelLoc.clone().add(1.002, 0.5, 0.5);
+            case WEST -> barrelLoc.clone().add(1.005, 0.5, 0.5);
             case EAST -> barrelLoc.clone().add(0, 0.5, 0.502);
             default -> barrelLoc.clone().add(0.5, 0.5, 1.002);
         };
@@ -445,7 +445,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
         }
 
         if (theItem == null) {
-            container.item.setItemStack(item.clone());
+            container.item.setItemStack(item.asOne().clone());
             container.itemName.text(getItemName(item));
             container.itemCount.text(Component.text(item.getAmount()));
 

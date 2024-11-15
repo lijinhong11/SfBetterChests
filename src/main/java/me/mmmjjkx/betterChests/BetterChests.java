@@ -36,7 +36,7 @@ public final class BetterChests extends JavaPlugin implements SlimefunAddon {
                 SimpleDrawer d = (SimpleDrawer) req.getSlimefunItem();
                 Location loc = req.getLocation();
                 String itemName = LegacyComponentSerializer.legacyAmpersand().serialize(SimpleDrawer.getItemName(d.getStoringItem(loc)));
-                return "&7| " + itemName + " &7|" + HudBuilder.getAbbreviatedNumber(d.getStoringItemCount(loc)) + "/" + HudBuilder.getAbbreviatedNumber(d.getCapacity());
+                return "&7| &f" + itemName + " &7| &f" + HudBuilder.getAbbreviatedNumber(d.getStoringItemCount(loc)) + "/" + HudBuilder.getAbbreviatedNumber(d.getCapacity());
             });
 
             SlimeHUD.getHudController().registerCustomHandler(IEStorageUnit.class, req -> {
@@ -44,7 +44,7 @@ public final class BetterChests extends JavaPlugin implements SlimefunAddon {
                 IEStorageCache cache = d.getCache(req.getLocation());
                 Location loc = req.getLocation();
                 String itemName = LegacyComponentSerializer.legacyAmpersand().serialize(SimpleDrawer.getItemName(d.getDisplayingItem(loc.getBlock())));
-                return "&7| " + itemName + " &7|" + HudBuilder.getAbbreviatedNumber(cache.getStored()) + "/" + HudBuilder.getAbbreviatedNumber(d.getCapacity());
+                return "&7| &f" + itemName + " &7| &f" + HudBuilder.getAbbreviatedNumber(cache.getStored()) + "/" + HudBuilder.getAbbreviatedNumber(d.getCapacity());
             });
         }
 

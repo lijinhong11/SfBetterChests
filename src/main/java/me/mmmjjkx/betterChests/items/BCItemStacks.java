@@ -47,7 +47,5 @@ public class BCItemStacks {
     public static final ItemStack IE_STORAGE_UNIT_7 = new CustomItemStack(Material.CRIMSON_STEM, "&eIE Storage Unit &6Lvl 7", "&bInfinityExpansion-like storage unit", "&dCapacity: 1,000,000,000");
     public static final ItemStack IE_STORAGE_UNIT_8 = new CustomItemStack(Material.WARPED_STEM, "&eIE Storage Unit &6Lvl 8", "&bInfinityExpansion-like storage unit", "&dCapacity: 2,140,000,000");
 
-    public static final ItemStack NETWORKS_DRAWER_PUSHER = new CustomItemStack(Material.BROWN_STAINED_GLASS, "&aNetwork Drawer Pusher", "&b&lPush items into BC's drawers");
-    public static final ItemStack NETWORKS_DRAWER_GRABBER = new CustomItemStack(Material.ORANGE_STAINED_GLASS, "&aNetwork Drawer Grabber", "&b&lGrab items from BC's drawers");
     public static final ItemStack POINT_TO_POINT_TRANSFER = new CustomItemStack(Material.END_ROD, "&aPoint-to-Point Transfer", "&b&lA great tool for transferring items between two blocks");
 }

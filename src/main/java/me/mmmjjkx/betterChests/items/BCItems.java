@@ -9,8 +9,6 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.RadioactiveItem;
 import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.BetterChests;
-import me.mmmjjkx.betterChests.items.cargo.NetworksDrawerGrabber;
-import me.mmmjjkx.betterChests.items.cargo.NetworksDrawerPusher;
 import me.mmmjjkx.betterChests.items.cargo.P2PTransfer;
 import me.mmmjjkx.betterChests.items.chests.OnlyInputChest;
 import me.mmmjjkx.betterChests.items.chests.OnlyOutputChest;
@@ -416,25 +414,5 @@ public class BCItems {
         IE_STORAGE_UNIT_6.register(BetterChests.INSTANCE);
         IE_STORAGE_UNIT_7.register(BetterChests.INSTANCE);
         IE_STORAGE_UNIT_8.register(BetterChests.INSTANCE);
-
-        if (Bukkit.getPluginManager().isPluginEnabled("Networks")) {
-            new NetworksDrawerPusher(
-                    new SlimefunItemStack("BC_NETWORKS_DRAWER_PUSHER", BCItemStacks.NETWORKS_DRAWER_PUSHER),
-                    RecipeType.ENHANCED_CRAFTING_TABLE,
-                    new ItemStack[]{
-                            null, NetworksSlimefunItemStacks.NETWORK_BRIDGE.clone(), null,
-                            null, NetworksSlimefunItemStacks.NETWORK_PUSHER.clone(), null,
-                            null, GEAR_WHEEL.getItem().clone(), null
-                    }).register(BetterChests.INSTANCE);
-
-            new NetworksDrawerGrabber(
-                    new SlimefunItemStack("BC_NETWORKS_DRAWER_GRABBER", BCItemStacks.NETWORKS_DRAWER_GRABBER),
-                    RecipeType.ENHANCED_CRAFTING_TABLE,
-                    new ItemStack[]{
-                            null, NetworksSlimefunItemStacks.NETWORK_BRIDGE.clone(), null,
-                            null, NetworksSlimefunItemStacks.NETWORK_GRABBER.clone(), null,
-                            null, GEAR_WHEEL.getItem().clone(), null
-                    }).register(BetterChests.INSTANCE);
-        }
     }
 }
