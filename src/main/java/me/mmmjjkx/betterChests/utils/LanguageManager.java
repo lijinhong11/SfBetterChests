@@ -14,7 +14,6 @@ import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import it.unimi.dsi.fastutil.Pair;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
@@ -152,30 +151,6 @@ public final class LanguageManager {
         } catch (Exception e) {
             e.printStackTrace();
             plugin.getLogger().warning("File completion of '" + resourceFile + "' is failed.");
-        }
-    }
-
-    public static final class MessageReplacement implements Pair<String, String> {
-        private final String key;
-        private final String value;
-
-        public MessageReplacement(String key, String value) {
-            this.key = key;
-            this.value = value;
-        }
-
-        public String parse(String msg) {
-            return msg.replace("%" + key + "%", value);
-        }
-
-        @Override
-        public String left() {
-            return key;
-        }
-
-        @Override
-        public String right() {
-            return value;
         }
     }
 }

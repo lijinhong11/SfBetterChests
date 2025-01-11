@@ -3,22 +3,22 @@ package me.mmmjjkx.betterChests.items;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
+import me.mmmjjkx.betterChests.BetterChests;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public class BCItemStacks {
-    public static final ItemStack TIP = new CustomItemStack(Material.PAPER, "&6&lTip",
-            "&c&lDon't place too many drawers in one chunk! ",
-            "&cThe drawers will spawn 3 entities once they were placed.");
+    public static final ItemStack TIP = new CustomItemStack(Material.PAPER, BetterChests.INSTANCE.getLang().getMsg("items.tip.name"),
+            BetterChests.INSTANCE.getLang().getMsgList("items.tip.lore"));
 
-    public static final ItemStack GROUP_MAIN_ITEM = new CustomItemStack(Material.CHEST, "&6&lBetter Chests");
-    public static final ItemStack GROUP_STORAGE_ITEM = new CustomItemStack(Material.BARREL, "&a&lStorages");
-    public static final ItemStack GROUP_TOOL_ITEM = new CustomItemStack(Material.BLAZE_ROD, "&b&lTools & Machines");
-    public static final ItemStack GROUP_MATERIAL_ITEM = new CustomItemStack(Material.IRON_INGOT, "&b&lMaterials");
-    public static final ItemStack GROUP_CARGO_ITEM = new CustomItemStack(Material.CHEST, "&e&lCargo");
+    public static final ItemStack GROUP_MAIN_ITEM = new CustomItemStack(Material.CHEST, BetterChests.INSTANCE.getLang().getMsg("groups.main"));
+    public static final ItemStack GROUP_STORAGE_ITEM = new CustomItemStack(Material.BARREL, BetterChests.INSTANCE.getLang().getMsg("groups.storage"));
+    public static final ItemStack GROUP_TOOL_ITEM = new CustomItemStack(Material.BLAZE_ROD, BetterChests.INSTANCE.getLang().getMsg("groups.ool_machines"));
+    public static final ItemStack GROUP_MATERIAL_ITEM = new CustomItemStack(Material.IRON_INGOT, BetterChests.INSTANCE.getLang().getMsg("groups.materials"));
+    public static final ItemStack GROUP_CARGO_ITEM = new CustomItemStack(Material.CHEST, BetterChests.INSTANCE.getLang().getMsg("groups.cargo"));
 
-    public static final ItemStack GEAR_WHEEL = new CustomItemStack(Material.REDSTONE, "&aGear Wheel", "&7A thing for crafting BC's things");
-    public static final ItemStack TIGHTLY_BLISTERING_INGOT = new CustomItemStack(Material.IRON_INGOT, "&eTightly Blistering Ingot", "&7A high-hardness metal", LoreBuilder.radioactive(Radioactivity.VERY_HIGH));
+    public static final ItemStack GEAR_WHEEL = new CustomItemStack(Material.REDSTONE, BetterChests.INSTANCE.getLang().getMsg("items.gear_wheel.name"), BetterChests.INSTANCE.getLang().getMsg("items.gear_wheel.lore"));
+    public static final ItemStack TIGHTLY_BLISTERING_INGOT = new CustomItemStack(Material.IRON_INGOT, BetterChests.INSTANCE.getLang().getMsg("items.tightly_blistering_ingot.name"), BetterChests.INSTANCE.getLang().getMsg("items.tightly_blistering_ingot.lore"), LoreBuilder.radioactive(Radioactivity.VERY_HIGH));
     public static final ItemStack TIGHTLY_BLISTERING_PLATE = new CustomItemStack(Material.IRON_BLOCK, "&eTightly Blistering Plate", "&7A high-hardness metal plate", LoreBuilder.radioactive(Radioactivity.HIGH));
 
     public static final ItemStack LOCATION_RECORDER = new CustomItemStack(Material.COMPASS, "&aLocation Recorder", "&bShift + Right-click to record location", "&bRight-click to open the corresponding machine");

@@ -363,7 +363,11 @@ public class BCItems {
     public static final P2PTransfer POINT_TO_POINT_TRANSFER = new P2PTransfer(
             new SlimefunItemStack("BC_POINT_TO_POINT_TRANSFER", BCItemStacks.POINT_TO_POINT_TRANSFER),
             RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[]{});
+            new ItemStack[]{
+                    new ItemStack(Material.IRON_BARS), SlimefunItems.ALUMINUM_INGOT, new ItemStack(Material.IRON_BARS),
+                    new ItemStack(Material.REDSTONE_BLOCK), new ItemStack(Material.CHEST), new ItemStack(Material.REDSTONE_BLOCK),
+                    SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.SYNTHETIC_SAPPHIRE
+            });
 
     private BCItems() {
     }
@@ -414,5 +418,7 @@ public class BCItems {
         IE_STORAGE_UNIT_6.register(BetterChests.INSTANCE);
         IE_STORAGE_UNIT_7.register(BetterChests.INSTANCE);
         IE_STORAGE_UNIT_8.register(BetterChests.INSTANCE);
+
+        //POINT_TO_POINT_TRANSFER.register(BetterChests.INSTANCE);
     }
 }

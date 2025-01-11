@@ -51,9 +51,18 @@ items:
       - "&bInfinityExpansion-like storage unit"
       - "&dCapacity: %capacity%"
     status: "&aStatus"
+    empty: "&6Stored: &e0 / %max% &7(0%)"
     error: "&c&lERROR"
+    break: "&aStored items transferred to dropped item"
+    lore_stored: "&6Stored: %itemname% &ex %amount%"
   p2p_transfer:
     name: "&aPoint-to-Point Transfer"
     lore:
       - "&b&lA great tool for transferring items between two blocks"
       - "&d&lPlace and ready to use"
+    up: "&7&lUP"
+    down: "&7&lDOWN"
+    west: "&7&lWEST"
+    east: "&7&lEAST"
+    north: "&7&lNORTH"
+    south: "&7&lSOUTH"

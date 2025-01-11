@@ -27,7 +27,7 @@ public final class BetterChests extends JavaPlugin implements SlimefunAddon {
         saveDefaultConfig();
         saveConfig();
 
-        //languageManager = new LanguageManager(this);
+        languageManager = new LanguageManager(this);
 
         BCItems.registerItems();
 
