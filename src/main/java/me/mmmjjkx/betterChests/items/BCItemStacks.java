@@ -12,8 +12,8 @@ public class BCItemStacks {
             BetterChests.INSTANCE.getLang().getMsgList("items.tip.lore"));
 
     public static final ItemStack GROUP_MAIN_ITEM = new CustomItemStack(Material.CHEST, BetterChests.INSTANCE.getLang().getMsg("groups.main"));
-    public static final ItemStack GROUP_STORAGE_ITEM = new CustomItemStack(Material.BARREL, BetterChests.INSTANCE.getLang().getMsg("groups.storage"));
-    public static final ItemStack GROUP_TOOL_ITEM = new CustomItemStack(Material.BLAZE_ROD, BetterChests.INSTANCE.getLang().getMsg("groups.ool_machines"));
+    public static final ItemStack GROUP_STORAGE_ITEM = new CustomItemStack(Material.BARREL, BetterChests.INSTANCE.getLang().getMsg("groups.storages"));
+    public static final ItemStack GROUP_TOOL_ITEM = new CustomItemStack(Material.BLAZE_ROD, BetterChests.INSTANCE.getLang().getMsg("groups.tool_machines"));
     public static final ItemStack GROUP_MATERIAL_ITEM = new CustomItemStack(Material.IRON_INGOT, BetterChests.INSTANCE.getLang().getMsg("groups.materials"));
     public static final ItemStack GROUP_CARGO_ITEM = new CustomItemStack(Material.CHEST, BetterChests.INSTANCE.getLang().getMsg("groups.cargo"));
 
