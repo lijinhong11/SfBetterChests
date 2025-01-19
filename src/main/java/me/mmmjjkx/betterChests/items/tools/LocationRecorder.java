@@ -98,13 +98,6 @@ public class LocationRecorder extends SimpleSlimefunItem<ItemUseHandler> impleme
 
                     BlockMenu menu = BlockStorage.getInventory(loc);
                     if (menu != null) {
-
-                        SlimefunItem item = BlockStorage.check(loc);
-                        if (item != null && item.getId().equals("NTW_GRID")) {
-                            p.sendMessage("§cYou cannot record a location of a Networks Grid.");
-                            return; // Networks already had remote accessor
-                        }
-
                         menu.open(p);
                     }
                 } else {
