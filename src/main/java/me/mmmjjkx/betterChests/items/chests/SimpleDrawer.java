@@ -52,12 +52,18 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
     private final NamespacedKey COUNT_ENTITY = new NamespacedKey(BetterChests.INSTANCE, "drawer_item_count_entity");
     private final NamespacedKey FACING = new NamespacedKey(BetterChests.INSTANCE, "drawer_facing");
 
+    private static final ItemStack EMPTY = new ItemStack(Material.BARRIER);
+
     private final Map<Location, EntityContainer> entities = new HashMap<>();
     /**
      *  Get the capacity of the drawer.
      */
     @Getter
     private final long capacity;
+
+    static {
+        EMPTY.editMeta(m -> m.displayName(Component.text("Empty")));
+    }
 
     public SimpleDrawer(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, long capacity) {
         super(BCGroups.STORAGES, item, recipeType, recipe);
@@ -152,7 +158,7 @@ public class SimpleDrawer extends SlimefunItem implements NotHopperable {
 
                     if (count - toTake == 0) {
                         container.itemName.text(Component.text("Empty"));
-                        container.item.setItemStack(new ItemStack(Material.BARRIER));
+                        container.item.setItemStack(EMPTY);
                     }
 
                     pinv.addItem(beingGet);
