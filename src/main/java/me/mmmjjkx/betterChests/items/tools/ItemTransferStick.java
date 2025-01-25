@@ -7,6 +7,8 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
+import me.mmmjjkx.betterChests.BetterChests;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -17,6 +19,8 @@ Transfer items from fluffymachine's barrel / IE storage / drawer / BC's IE-like 
  */
 
 public class ItemTransferStick extends SimpleSlimefunItem<ItemUseHandler> implements NotPlaceable {
+    private final NamespacedKey key = new NamespacedKey(BetterChests.INSTANCE, "transfered_item");
+
     public ItemTransferStick(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
     }

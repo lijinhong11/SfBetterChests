@@ -80,6 +80,8 @@ public class ChestColorer extends SimpleSlimefunItem<ItemUseHandler> implements 
 
                 PersistentDataAPI.setInt(meta, COLOR_KEY, nextIndex);
                 item.setItemMeta(meta);
+
+                p.sendActionBar(lore);
             } else {
                 if (block.isPresent()) {
                     Block b = block.get();

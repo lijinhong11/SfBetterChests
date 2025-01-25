@@ -411,7 +411,7 @@ public final class IEStorageCache {
 
     private void withdraw(Player p, int withdraw) {
         if (this.material.getMaxStackSize() == 64) {
-            ItemStack remaining = p.getInventory().addItem(createItem(withdraw)).get(0);
+            ItemStack remaining = p.getInventory().addItem(createItem(withdraw)).values().toArray(new ItemStack[]{})[0];
             if (remaining != null) {
                 if (remaining.getAmount() != withdraw) {
                     this.amount += remaining.getAmount() - withdraw;
@@ -426,7 +426,7 @@ public final class IEStorageCache {
         int toWithdraw = withdraw;
         do {
             int amt = Math.min(this.material.getMaxStackSize(), toWithdraw);
-            ItemStack remaining = inv.addItem(createItem(amt)).get(0);
+            ItemStack remaining = inv.addItem(createItem(amt)).values().toArray(new ItemStack[]{})[0];
             if (remaining != null) {
                 toWithdraw -= amt - remaining.getAmount();
                 break;
@@ -441,7 +441,7 @@ public final class IEStorageCache {
     }
 
     private void withdrawLast(Player p) {
-        if (p.getInventory().addItem(createItem(1)).get(0) == null) {
+        if (p.getInventory().addItem(createItem(1)).values().toArray(new ItemStack[]{})[0] == null) {
             setEmpty();
         }
     }
