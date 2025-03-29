@@ -1,0 +1,89 @@
+# Traduzido por: mundodrix em 25/03/2025
+# Thanks to: mundodrix for the translation!
+groups:
+  main: '&6&lBetter Chests'
+  storages: '&a&lArmazenamentos'
+  tool_machines: '&b&lFerramentas & Máquinas'
+  materials: '&3&lMateriais'
+  cargo: '&e&lCarga'
+items:
+  tip:
+    name: '&bDica'
+    lore:
+      - '&c&lNão coloque muitas gavetas em um mesmo chunk!'
+      - '&c&lAs gavetas geram 3 entidades quando colocadas.'
+      - '&c&lVocê pode perder itens se colocar muitas gavetas em um chunk.'
+  gear_wheel:
+    name: '&bRoda Dentada'
+    lore:
+      - '&7Usado para craftar itens do BC'
+  chest_color_changer:
+    name: '&aModificador de Cor de Baú'
+    lore:
+      - '&aClique-direito para mudar a cor do baú BC'
+      - '&aShift + Clique-direito para alternar entre cores'
+      - ''
+      - '&dCor atual: &6Sem Cor'
+      - ''
+      - '&8⇨ &e⚡ &7 0 / 200 J'
+    current_color: "&dCor atual: "
+    no_energy: "&4Este item está sem energia!"
+    colors:
+      red: "&cVermelho"
+      orange: "&6Laranja"
+      yellow: "&eAmarelo"
+      lime: "&aLimão"
+      green: "&aVerde"
+      cyan: "&bCiano"
+      light_blue: "&9Azul Claro"
+      blue: "&9Azul"
+      purple: "&dRoxo"
+      magenta: "&dMagenta"
+      pink: "&dRosa"
+      black: "&0Preto"
+      gray: "&7Cinza"
+      light_gray: "&7Cinza Claro"
+      white: "&fBranco"
+      no_color: "&6Sem Cor"
+  location_recorder:
+    name: '&aGravador de Localização'
+    lore:
+      - '&bShift + Clique-direito para gravar localização'
+      - '&bClique-direito para abrir a máquina correspondente'
+  tightly_blistering_ingot:
+    name: '&eLingote Ultra-resistente'
+    lore:
+      - '&7Um metal de alta resistência'
+  tightly_blistering_plate:
+    name: '&eChapa Ultra-resistente'
+    lore:
+      - '&7Uma chapa metálica de alta resistência'
+  drawer:
+    name_lvl: '&bGaveta &aLv. &6%lvl%'
+    name_max: '&bGaveta &aLv. &6MÁX'
+    lore:
+      - '&bClique-direito para pegar 64 itens (com a mão vazia)'
+      - '&bClique-direito para armazenar itens da sua mão'
+      - '&dCapacidade: %capacity%'
+  infinity_expansion_like_storage:
+    name_lvl: '&bArmazenamento Infinity-like &aLv. &6%lvl%'
+    name_max: '&bArmazenamento Infinity-like &aLv. &6MÁX'
+    lore:
+      - '&bUnidade de armazenamento estilo InfinityExpansion'
+      - '&dCapacidade: %capacity%'
+    status: '&aStatus'
+    empty: '&6Armazenado: &e0 / %max% &7(0%)'
+    error: '&c&lERRO'
+    break: '&aItens armazenados transferidos para item dropado'
+    lore_stored: '&6Armazenado: %itemname% &ex %amount%'
+  p2p_transfer:
+    name: '&aTransferência Ponto-a-Ponto'
+    lore:
+      - '&b&lUma ótima ferramenta para transferir itens entre dois blocos'
+      - '&d&lColoque e está pronto para usar'
+    up: '&7&lCIMA'
+    down: '&7&lBAIXO'
+    west: '&7&lOESTE'
+    east: '&7&lLESTE'
+    north: '&7&lNORTE'
+    south: '&7&lSUL'

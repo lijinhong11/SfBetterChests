@@ -10,6 +10,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
+import lombok.Getter;
 import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.BetterChests;
 import me.mmmjjkx.betterChests.items.chests.SimpleChest;
@@ -70,7 +71,10 @@ public class ChestColorer extends SimpleSlimefunItem<ItemUseHandler> implements 
 
                 ItemMeta meta = item.getItemMeta();
 
-                Component lore = LegacyComponentSerializer.legacyAmpersand().deserialize("&dCurrent color: &6" + color.name())
+                String currentColor = BetterChests.INSTANCE.getLang().getMsg("items.chest_color_changer.current_color");
+                String colorName = BetterChests.INSTANCE.getLang().getMsg(color.getTranslationKey());
+
+                Component lore = LegacyComponentSerializer.legacyAmpersand().deserialize(currentColor + colorName)
                         .decoration(TextDecoration.ITALIC, false);
                 List<Component> loreList = item.lore();
 
@@ -93,7 +97,7 @@ public class ChestColorer extends SimpleSlimefunItem<ItemUseHandler> implements 
                             ColorMaterials color = ColorMaterials.values()[index];
                             b.setType(color.getMaterial());
                         } else {
-                            p.sendMessage("§cThe item is out of charge.");
+                            p.sendMessage(BetterChests.INSTANCE.getLang().getMsg("items.chest_color_changer.no_energy"));
                         }
                     }
                 } else {
@@ -103,33 +107,36 @@ public class ChestColorer extends SimpleSlimefunItem<ItemUseHandler> implements 
         };
     }
 
+    @Getter
     private enum ColorMaterials {
-        NoColor(Material.GLASS),
-        White(Material.WHITE_STAINED_GLASS),
-        Yellow(Material.YELLOW_STAINED_GLASS),
-        Orange(Material.ORANGE_STAINED_GLASS),
-        Red(Material.RED_STAINED_GLASS),
-        Blue(Material.BLUE_STAINED_GLASS),
-        Green(Material.GREEN_STAINED_GLASS),
-        Lime(Material.LIME_STAINED_GLASS),
-        Pink(Material.PINK_STAINED_GLASS),
-        Purple(Material.PURPLE_STAINED_GLASS),
-        Brown(Material.BROWN_STAINED_GLASS),
-        Black(Material.BLACK_STAINED_GLASS),
-        Gray(Material.GRAY_STAINED_GLASS),
-        LightGray(Material.LIGHT_GRAY_STAINED_GLASS),
-        Cyan(Material.CYAN_STAINED_GLASS),
-        Magenta(Material.MAGENTA_STAINED_GLASS),
-        LightBlue(Material.LIGHT_BLUE_STAINED_GLASS);
+        NoColor(Material.GLASS, "no_color"),
+        White(Material.WHITE_STAINED_GLASS, "white"),
+        Yellow(Material.YELLOW_STAINED_GLASS, "yellow"),
+        Orange(Material.ORANGE_STAINED_GLASS, "orange"),
+        Red(Material.RED_STAINED_GLASS, "red"),
+        Blue(Material.BLUE_STAINED_GLASS, "blue"),
+        Green(Material.GREEN_STAINED_GLASS, "green"),
+        Lime(Material.LIME_STAINED_GLASS, "lime"),
+        Pink(Material.PINK_STAINED_GLASS, "pink"),
+        Purple(Material.PURPLE_STAINED_GLASS, "purple"),
+        Brown(Material.BROWN_STAINED_GLASS, "brown"),
+        Black(Material.BLACK_STAINED_GLASS, "black"),
+        Gray(Material.GRAY_STAINED_GLASS, "gray"),
+        LightGray(Material.LIGHT_GRAY_STAINED_GLASS, "light_gray"),
+        Cyan(Material.CYAN_STAINED_GLASS, "cyan"),
+        Magenta(Material.MAGENTA_STAINED_GLASS, "magenta"),
+        LightBlue(Material.LIGHT_BLUE_STAINED_GLASS, "light_blue");
 
         private final Material material;
+        private final String key;
 
-        ColorMaterials(Material material) {
+        ColorMaterials(Material material, String key) {
             this.material = material;
+            this.key = key;
         }
 
-        public Material getMaterial() {
-            return material;
+        public String getTranslationKey() {
+            return "items.chest_color_changer.colors." + key;
         }
     }
 }

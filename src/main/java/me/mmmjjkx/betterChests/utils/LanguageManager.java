@@ -62,8 +62,9 @@ public final class LanguageManager {
             throw new RuntimeException(e);
         }
 
-        String lang = plugin.getConfig().getString("language");
+        String lang = plugin.getConfig().getString("options.language");
         if (lang == null || lang.isBlank()) {
+            plugin.getConfig().set("options.language", "en-US");
             lang = "en-US";
         }
 

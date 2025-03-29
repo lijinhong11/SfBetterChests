@@ -1,6 +1,5 @@
 package me.mmmjjkx.betterChests.items.cargo;
 
-import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -10,6 +9,7 @@ import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.BetterChests;
 import me.mmmjjkx.betterChests.items.chests.SimpleDrawer;
+import me.mmmjjkx.betterChests.utils.ItemStackBuilder;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
@@ -32,19 +32,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+//I am very sorry that I don't finish it
 @SuppressWarnings("deprecation")
 public class P2PTransfer extends SlimefunItem implements InventoryBlock {
+
     private final BlockFace[] FACES = {BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST, BlockFace.UP, BlockFace.DOWN, BlockFace.SELF};
 
     private final List<Integer> TAKEN_SLOTS = List.of(0,18,1,19,9,11,10);
 
-    private final ItemStack UP = new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.up"));
-    private final ItemStack DOWN = new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.down"));
-    private final ItemStack WEST = new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.west"));
-    private final ItemStack EAST = new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.east"));
-    private final ItemStack NORTH = new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.north"));
-    private final ItemStack SOUTH = new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.south"));
-    private final ItemStack STOP_TRANSFER = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.stop_transfer"));
+    private final ItemStack UP = new ItemStackBuilder(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.up")).getItemStack();
+    private final ItemStack DOWN = new ItemStackBuilder(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.down")).getItemStack();
+    private final ItemStack WEST = new ItemStackBuilder(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.west")).getItemStack();
+    private final ItemStack EAST = new ItemStackBuilder(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.east")).getItemStack();
+    private final ItemStack NORTH = new ItemStackBuilder(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.north")).getItemStack();
+    private final ItemStack SOUTH = new ItemStackBuilder(Material.PURPLE_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.south")).getItemStack();
+    private final ItemStack STOP_TRANSFER = new ItemStackBuilder(Material.RED_STAINED_GLASS_PANE, BetterChests.INSTANCE.getLang().getMsg("items.p2p_transfer.stop_transfer")).getItemStack();
 
     public P2PTransfer(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(BCGroups.CARGO, item, recipeType, recipe);
@@ -60,7 +62,7 @@ public class P2PTransfer extends SlimefunItem implements InventoryBlock {
             }
         }, new BlockBreakHandler(false, false) {
             @Override
-            public void onPlayerBreak(BlockBreakEvent e, ItemStack itemStack, List<ItemStack> list) {
+            public void onPlayerBreak(@NotNull BlockBreakEvent e, @NotNull ItemStack itemStack, @NotNull List<ItemStack> list) {
                 Location loc = e.getBlock().getLocation();
                 BlockStorage.clearBlockInfo(loc);
             }

@@ -1,6 +1,5 @@
 package me.mmmjjkx.betterChests.items;
 
-import io.github.sefiraat.networks.slimefun.NetworksSlimefunItemStacks;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -18,7 +17,6 @@ import me.mmmjjkx.betterChests.items.chests.ie.IEStorageUnit;
 import me.mmmjjkx.betterChests.items.machines.ChestDisassembler;
 import me.mmmjjkx.betterChests.items.tools.ChestColorer;
 import me.mmmjjkx.betterChests.items.tools.LocationRecorder;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 

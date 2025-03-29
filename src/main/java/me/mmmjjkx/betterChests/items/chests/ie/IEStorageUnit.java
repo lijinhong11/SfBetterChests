@@ -8,12 +8,12 @@ import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.BetterChests;
+import me.mmmjjkx.betterChests.utils.ItemStackBuilder;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.interfaces.InventoryBlock;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
@@ -65,17 +65,17 @@ public final class IEStorageUnit extends SlimefunItem implements InventoryBlock,
     static final int OUTPUT_SLOT = 16;
     static final int INTERACT_SLOT = 22;
 
-    private static final ItemStack INTERACTION_ITEM = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE,
+    private static final ItemStack INTERACTION_ITEM = new ItemStackBuilder(Material.LIME_STAINED_GLASS_PANE,
             "&aQuick Actions",
             "&bLeft Click: &7Withdraw 1 item",
             "&bRight Click: &7Withdraw 1 stack",
             "&bShift Left Click: &7Deposit inventory",
             "&bShift Right Click: &7Withdraw inventory"
-    );
-    private static final ItemStack LOADING_ITEM = new CustomItemStack(Material.CYAN_STAINED_GLASS_PANE,
+    ).getItemStack();
+    private static final ItemStack LOADING_ITEM = new ItemStackBuilder(Material.CYAN_STAINED_GLASS_PANE,
             "&bStatus",
             "&7Loading..."
-    );
+    ).getItemStack();
 
     final int max;
     private final Map<Location, IEStorageCache> caches = new HashMap<>();
@@ -109,7 +109,7 @@ public final class IEStorageUnit extends SlimefunItem implements InventoryBlock,
                 return (ItemStack) input.readObject();
             } catch (Exception e) {
                 e.printStackTrace();
-                return new CustomItemStack(Material.STONE, "&cERROR");
+                return new ItemStackBuilder(Material.STONE, "&cERROR").getItemStack();
             }
         }
     };

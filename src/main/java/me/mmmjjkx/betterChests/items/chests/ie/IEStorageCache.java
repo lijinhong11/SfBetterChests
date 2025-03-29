@@ -1,10 +1,10 @@
 package me.mmmjjkx.betterChests.items.chests.ie;
 
 import io.github.thebusybiscuit.slimefun4.libraries.dough.common.ChatColors;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.utils.tags.SlimefunTag;
 import me.mmmjjkx.betterChests.BetterChests;
+import me.mmmjjkx.betterChests.utils.ItemStackBuilder;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
@@ -47,10 +47,10 @@ public final class IEStorageCache {
     private static final String VOID_EXCESS = "void_excess"; // void excess true or null key
 
     /* Menu Items */
-    private static final ItemStack EMPTY_ITEM = new CustomItemStack(Material.BARRIER, meta -> {
+    private static final ItemStack EMPTY_ITEM = new ItemStackBuilder(Material.BARRIER, meta -> {
         meta.setDisplayName(ChatColor.WHITE + "Empty");
         meta.getPersistentDataContainer().set(EMPTY_KEY, PersistentDataType.BYTE, (byte) 1);
-    });
+    }).getItemStack();
 
     /* Space Pattern for Sign Display Names */
     private static final Pattern SPACE = Pattern.compile(" ");
@@ -350,7 +350,7 @@ public final class IEStorageCache {
     }
 
     private void updateStatus() {
-        this.menu.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.CYAN_STAINED_GLASS_PANE, meta -> {
+        this.menu.replaceExistingItem(STATUS_SLOT, new ItemStackBuilder(Material.CYAN_STAINED_GLASS_PANE, meta -> {
             meta.setDisplayName(ChatColor.AQUA + "Status");
             List<String> lore = new ArrayList<>();
             if (this.amount == 0) {
@@ -364,7 +364,7 @@ public final class IEStorageCache {
             lore.add(this.voidExcess ? VOID_EXCESS_TRUE : VOID_EXCESS_FALSE);
             lore.add(ChatColor.GRAY + "(Click to toggle)");
             meta.setLore(lore);
-        }), false);
+        }).getItemStack(), false);
     }
 
     private void setStored(ItemStack input) {
@@ -478,13 +478,13 @@ public final class IEStorageCache {
         }
     }
 
-    public void amount(int amount) {
-        this.amount = amount;
-    }
-
     private static final DecimalFormat FORMAT = new DecimalFormat("###,###,###,###,###,###.#");
 
     private String format(double num) {
         return FORMAT.format(num);
+    }
+
+    public void amount(int amount) {
+        this.amount = amount;
     }
 }

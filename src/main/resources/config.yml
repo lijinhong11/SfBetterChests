@@ -1,2 +1,3 @@
 options:
+  language: en-US
   auto-update: true
