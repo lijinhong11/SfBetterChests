@@ -8,7 +8,6 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.RadioactiveItem;
 import me.mmmjjkx.betterChests.BCGroups;
 import me.mmmjjkx.betterChests.BetterChests;
-import me.mmmjjkx.betterChests.items.cargo.P2PTransfer;
 import me.mmmjjkx.betterChests.items.chests.OnlyInputChest;
 import me.mmmjjkx.betterChests.items.chests.OnlyOutputChest;
 import me.mmmjjkx.betterChests.items.chests.SimpleChest;
@@ -32,9 +31,9 @@ public class BCItems {
             new SlimefunItemStack("BC_LOCATION_RECORDER", BCItemStacks.LOCATION_RECORDER),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                    null, SlimefunItems.SYNTHETIC_SAPPHIRE.clone(), null,
-                    null, SlimefunItems.GPS_TRANSMITTER_3, null,
-                    null, SlimefunItems.GPS_MARKER_TOOL, null
+                    null, SlimefunItems.SYNTHETIC_SAPPHIRE.getItem().getItem(), null,
+                    null, SlimefunItems.GPS_TRANSMITTER_3.getItem().getItem(), null,
+                    null, SlimefunItems.GPS_MARKER_TOOL.getItem().getItem(), null
             });
     public static final ChestDisassembler CHEST_DISASSEMBLER = new ChestDisassembler(
             new SlimefunItemStack("BC_CHEST_DISASSEMBLER", BCItemStacks.CHEST_DISASSEMBLER),
@@ -70,9 +69,9 @@ public class BCItems {
             new SlimefunItemStack("BC_TIGHTLY_BLISTERING_INGOT", BCItemStacks.TIGHTLY_BLISTERING_INGOT),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                    SlimefunItems.SYNTHETIC_EMERALD, SlimefunItems.SYNTHETIC_DIAMOND, SlimefunItems.SYNTHETIC_EMERALD,
-                    SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.BLISTERING_INGOT_3,
-                    SlimefunItems.SYNTHETIC_EMERALD, SlimefunItems.SYNTHETIC_DIAMOND, SlimefunItems.SYNTHETIC_EMERALD
+                    SlimefunItems.SYNTHETIC_EMERALD.getItem().getItem(), SlimefunItems.SYNTHETIC_DIAMOND.getItem().getItem(), SlimefunItems.SYNTHETIC_EMERALD.getItem().getItem(),
+                    SlimefunItems.BLISTERING_INGOT_3.getItem().getItem(), SlimefunItems.BLISTERING_INGOT_3.getItem().getItem(), SlimefunItems.BLISTERING_INGOT_3.getItem().getItem(),
+                    SlimefunItems.SYNTHETIC_EMERALD.getItem().getItem(), SlimefunItems.SYNTHETIC_DIAMOND.getItem().getItem(), SlimefunItems.SYNTHETIC_EMERALD.getItem().getItem()
             });
 
     public static final SlimefunItem TIGHTLY_BLISTERING_PLATE = new RadioactiveItem(
@@ -146,7 +145,7 @@ public class BCItems {
             new ItemStack[]{
                     null, null, null,
                     new ItemStack(Material.OAK_PLANKS), CHEST_36.getItem().clone(), new ItemStack(Material.OAK_PLANKS),
-                    null, SlimefunItems.HARDENED_METAL_INGOT.clone(), null
+                    null, SlimefunItems.HARDENED_METAL_INGOT.getItem().getItem(), null
             });
     public static final OnlyInputChest CHEST_INPUT_45 = new OnlyInputChest(
             45,
@@ -173,7 +172,7 @@ public class BCItems {
             new ItemStack[]{
                     null, null, null,
                     new ItemStack(Material.OAK_PLANKS), CHEST_45.getItem().clone(), new ItemStack(Material.OAK_PLANKS),
-                    null, SlimefunItems.REINFORCED_ALLOY_INGOT.clone(), null
+                    null, SlimefunItems.REINFORCED_ALLOY_INGOT.getItem().getItem().clone(), null
             });
     public static final OnlyInputChest CHEST_INPUT_54 = new OnlyInputChest(
             54,
@@ -231,57 +230,57 @@ public class BCItems {
             new SlimefunItemStack("BC_DRAWER_5", BCItemStacks.DRAWER_5),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                    SlimefunItems.SYNTHETIC_DIAMOND.clone(), SlimefunItems.SYNTHETIC_DIAMOND.clone(), SlimefunItems.SYNTHETIC_DIAMOND.clone(),
+                    SlimefunItems.SYNTHETIC_DIAMOND.getItem().getItem(), SlimefunItems.SYNTHETIC_DIAMOND.getItem().getItem(), SlimefunItems.SYNTHETIC_DIAMOND.getItem().getItem(),
                     CHEST_45.getItem().clone(), DRAWER_4.getItem().clone(), CHEST_45.getItem().clone(),
-                    SlimefunItems.SYNTHETIC_SAPPHIRE.clone(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_SAPPHIRE.clone()
+                    SlimefunItems.SYNTHETIC_SAPPHIRE.getItem().getItem(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_SAPPHIRE.getItem().getItem()
             }, 1_000_000);
     public static final SimpleDrawer DRAWER_6 = new SimpleDrawer(
             new SlimefunItemStack("BC_DRAWER_6", BCItemStacks.DRAWER_6),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                    SlimefunItems.HARDENED_METAL_INGOT.clone(), SlimefunItems.HARDENED_METAL_INGOT.clone(), SlimefunItems.HARDENED_METAL_INGOT.clone(),
+                    SlimefunItems.HARDENED_METAL_INGOT.getItem().getItem(), SlimefunItems.HARDENED_METAL_INGOT.getItem().getItem(), SlimefunItems.HARDENED_METAL_INGOT.getItem().getItem(),
                     CHEST_54.getItem().clone(), DRAWER_5.getItem().clone(), CHEST_54.getItem().clone(),
-                    SlimefunItems.SYNTHETIC_EMERALD.clone(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_EMERALD.clone()
+                    SlimefunItems.SYNTHETIC_EMERALD.getItem().getItem(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_EMERALD.getItem().getItem()
             }, 4_000_000);
     public static final SimpleDrawer DRAWER_7 = new SimpleDrawer(
             new SlimefunItemStack("BC_DRAWER_7", BCItemStacks.DRAWER_7),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                    SlimefunItems.REINFORCED_ALLOY_INGOT.clone(), SlimefunItems.BLISTERING_INGOT.clone(), SlimefunItems.REINFORCED_ALLOY_INGOT.clone(),
+                    SlimefunItems.REINFORCED_ALLOY_INGOT.getItem().getItem(), SlimefunItems.BLISTERING_INGOT.getItem().getItem(), SlimefunItems.REINFORCED_ALLOY_INGOT.getItem().getItem(),
                     CHEST_54.getItem().clone(), DRAWER_6.getItem().clone(), CHEST_54.getItem().clone(),
-                    SlimefunItems.SYNTHETIC_EMERALD.clone(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_EMERALD.clone()
+                    SlimefunItems.SYNTHETIC_EMERALD.getItem().getItem(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_EMERALD.getItem().getItem()
             }, 16_000_000);
     public static final SimpleDrawer DRAWER_8 = new SimpleDrawer(
             new SlimefunItemStack("BC_DRAWER_8", BCItemStacks.DRAWER_8),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.BLISTERING_INGOT_2.clone(), SlimefunItems.REINFORCED_PLATE.clone(),
+                    SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.BLISTERING_INGOT_2.getItem().getItem(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(),
                     CHEST_54.getItem().clone(), DRAWER_7.getItem().clone(), CHEST_54.getItem().clone(),
-                    SlimefunItems.SYNTHETIC_EMERALD.clone(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_EMERALD.clone()
+                    SlimefunItems.SYNTHETIC_EMERALD.getItem().getItem(), new ItemStack(Material.REDSTONE_BLOCK), SlimefunItems.SYNTHETIC_EMERALD.getItem().getItem()
             }, 64_000_000);
     public static final SimpleDrawer DRAWER_9 = new SimpleDrawer(
             new SlimefunItemStack("BC_DRAWER_9", BCItemStacks.DRAWER_9),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.BLISTERING_INGOT_3.clone(), SlimefunItems.REINFORCED_PLATE.clone(),
+                    SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.BLISTERING_INGOT_3.getItem().getItem(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(),
                     CHEST_54.getItem().clone(), DRAWER_8.getItem().clone(), CHEST_54.getItem().clone(),
-                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.REDSTONE_ALLOY.clone(), SlimefunItems.REINFORCED_PLATE.clone()
+                    SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.REDSTONE_ALLOY.getItem().getItem().clone(), SlimefunItems.REINFORCED_PLATE.getItem().getItem()
             }, 256_000_000);
     public static final SimpleDrawer DRAWER_10 = new SimpleDrawer(
             new SlimefunItemStack("BC_DRAWER_10", BCItemStacks.DRAWER_10),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                    SlimefunItems.REINFORCED_PLATE.clone(), TIGHTLY_BLISTERING_INGOT.getItem().clone(), SlimefunItems.REINFORCED_PLATE.clone(),
+                    SlimefunItems.REINFORCED_PLATE.getItem().getItem(), TIGHTLY_BLISTERING_INGOT.getItem().clone(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(),
                     CHEST_54.getItem().clone(), DRAWER_9.getItem().clone(), CHEST_54.getItem().clone(),
-                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.REDSTONE_ALLOY.clone(), SlimefunItems.REINFORCED_PLATE.clone()
+                    SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.REDSTONE_ALLOY.getItem().getItem().clone(), SlimefunItems.REINFORCED_PLATE.getItem().getItem()
             }, 1_000_000_000);
     public static final SimpleDrawer DRAWER_MAX = new SimpleDrawer(
             new SlimefunItemStack("BC_DRAWER_MAX", BCItemStacks.DRAWER_MAX),
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
-                    SlimefunItems.REINFORCED_PLATE.clone(), TIGHTLY_BLISTERING_PLATE.getItem().clone(), SlimefunItems.REINFORCED_PLATE.clone(),
+                    SlimefunItems.REINFORCED_PLATE.getItem().getItem(), TIGHTLY_BLISTERING_PLATE.getItem().clone(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(),
                     CHEST_54.getItem().clone(), DRAWER_10.getItem().clone(), CHEST_54.getItem().clone(),
-                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.REDSTONE_ALLOY.clone(), SlimefunItems.REINFORCED_PLATE.clone()
+                    SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.REDSTONE_ALLOY.getItem().getItem().clone(), SlimefunItems.REINFORCED_PLATE.getItem().getItem()
             }, 2_140_000_000);
 
     // IE Storage units
@@ -289,84 +288,74 @@ public class BCItems {
             new SlimefunItemStack("BC_IE_STORAGE_UNIT_1", BCItemStacks.IE_STORAGE_UNIT_1),
             32_000,
             new ItemStack[]{
-                    SlimefunItems.COPPER_INGOT.clone(), SlimefunItems.COPPER_INGOT.clone(), SlimefunItems.COPPER_INGOT.clone(),
+                    SlimefunItems.COPPER_INGOT.getItem().getItem(), SlimefunItems.COPPER_INGOT.getItem().getItem(), SlimefunItems.COPPER_INGOT.getItem().getItem(),
                     GEAR_WHEEL.getItem().clone(), new ItemStack(Material.CHEST), GEAR_WHEEL.getItem().clone(),
-                    SlimefunItems.ELECTRIC_MOTOR.clone(), new ItemStack(Material.OAK_LOG), SlimefunItems.SILICON.clone()
+                    SlimefunItems.ELECTRIC_MOTOR.getItem().getItem(), new ItemStack(Material.OAK_LOG), SlimefunItems.SILICON.getItem().getItem()
             });
 
     public static final IEStorageUnit IE_STORAGE_UNIT_2 = new IEStorageUnit(
             new SlimefunItemStack("BC_IE_STORAGE_UNIT_2", BCItemStacks.IE_STORAGE_UNIT_2),
             128_000,
             new ItemStack[]{
-                    SlimefunItems.ALUMINUM_BRONZE_INGOT.clone(), SlimefunItems.ALUMINUM_BRONZE_INGOT.clone(), SlimefunItems.ALUMINUM_BRONZE_INGOT.clone(),
+                    SlimefunItems.ALUMINUM_BRONZE_INGOT.getItem().getItem(), SlimefunItems.ALUMINUM_BRONZE_INGOT.getItem().getItem(), SlimefunItems.ALUMINUM_BRONZE_INGOT.getItem().getItem(),
                     GEAR_WHEEL.getItem().clone(), IE_STORAGE_UNIT_1.getItem().clone(), GEAR_WHEEL.getItem().clone(),
-                    SlimefunItems.ELECTRIC_MOTOR.clone(), SlimefunItems.HARDENED_METAL_INGOT.clone(), SlimefunItems.SYNTHETIC_EMERALD.clone()
+                    SlimefunItems.ELECTRIC_MOTOR.getItem().getItem(), SlimefunItems.HARDENED_METAL_INGOT.getItem().getItem(), SlimefunItems.SYNTHETIC_EMERALD.getItem().getItem()
             });
 
     public static final IEStorageUnit IE_STORAGE_UNIT_3 = new IEStorageUnit(
             new SlimefunItemStack("BC_IE_STORAGE_UNIT_3", BCItemStacks.IE_STORAGE_UNIT_3),
             1_000_000,
             new ItemStack[]{
-                    SlimefunItems.HARDENED_METAL_INGOT.clone(), SlimefunItems.HARDENED_METAL_INGOT.clone(), SlimefunItems.HARDENED_METAL_INGOT.clone(),
+                    SlimefunItems.HARDENED_METAL_INGOT.getItem().getItem(), SlimefunItems.HARDENED_METAL_INGOT.getItem().getItem(), SlimefunItems.HARDENED_METAL_INGOT.getItem().getItem(),
                     GEAR_WHEEL.getItem().clone(), IE_STORAGE_UNIT_2.getItem().clone(), GEAR_WHEEL.getItem().clone(),
-                    SlimefunItems.ELECTRIC_MOTOR.clone(), SlimefunItems.REINFORCED_ALLOY_INGOT.clone(), SlimefunItems.SYNTHETIC_DIAMOND.clone()
+                    SlimefunItems.ELECTRIC_MOTOR.getItem().getItem(), SlimefunItems.REINFORCED_ALLOY_INGOT.getItem().getItem(), SlimefunItems.SYNTHETIC_DIAMOND.getItem().getItem()
             });
 
     public static final IEStorageUnit IE_STORAGE_UNIT_4 = new IEStorageUnit(
             new SlimefunItemStack("BC_IE_STORAGE_UNIT_4", BCItemStacks.IE_STORAGE_UNIT_4),
             4_000_000,
             new ItemStack[]{
-                    SlimefunItems.REINFORCED_ALLOY_INGOT.clone(), SlimefunItems.REINFORCED_ALLOY_INGOT.clone(), SlimefunItems.REINFORCED_ALLOY_INGOT.clone(),
-                    SlimefunItems.REDSTONE_ALLOY, IE_STORAGE_UNIT_3.getItem().clone(), SlimefunItems.REDSTONE_ALLOY,
-                    SlimefunItems.ELECTRIC_MOTOR.clone(), SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.SYNTHETIC_DIAMOND.clone()
+                    SlimefunItems.REINFORCED_ALLOY_INGOT.getItem().getItem(), SlimefunItems.REINFORCED_ALLOY_INGOT.getItem().getItem(), SlimefunItems.REINFORCED_ALLOY_INGOT.getItem().getItem(),
+                    SlimefunItems.REDSTONE_ALLOY.getItem().getItem(), IE_STORAGE_UNIT_3.getItem().clone(), SlimefunItems.REDSTONE_ALLOY.getItem().getItem(),
+                    SlimefunItems.ELECTRIC_MOTOR.getItem().getItem(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.SYNTHETIC_DIAMOND.getItem().getItem()
             });
 
     public static final IEStorageUnit IE_STORAGE_UNIT_5 = new IEStorageUnit(
             new SlimefunItemStack("BC_IE_STORAGE_UNIT_5", BCItemStacks.IE_STORAGE_UNIT_5),
             64_000_000,
             new ItemStack[]{
-                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.REINFORCED_PLATE.clone(),
-                    SlimefunItems.REDSTONE_ALLOY, IE_STORAGE_UNIT_4.getItem().clone(), SlimefunItems.REDSTONE_ALLOY,
-                    SlimefunItems.ELECTRIC_MOTOR.clone(), SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.ANDROID_MEMORY_CORE.clone()
+                    SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(),
+                    SlimefunItems.REDSTONE_ALLOY.getItem().getItem(), IE_STORAGE_UNIT_4.getItem().clone(), SlimefunItems.REDSTONE_ALLOY.getItem().getItem(),
+                    SlimefunItems.ELECTRIC_MOTOR.getItem().getItem(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.ANDROID_MEMORY_CORE.getItem().getItem()
             });
 
     public static final IEStorageUnit IE_STORAGE_UNIT_6 = new IEStorageUnit(
             new SlimefunItemStack("BC_IE_STORAGE_UNIT_6", BCItemStacks.IE_STORAGE_UNIT_6),
             256_000_000,
             new ItemStack[]{
-                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.BLISTERING_INGOT.clone(), SlimefunItems.REINFORCED_PLATE.clone(),
-                    SlimefunItems.REDSTONE_ALLOY, IE_STORAGE_UNIT_5.getItem().clone(), SlimefunItems.REDSTONE_ALLOY,
-                    SlimefunItems.ELECTRIC_MOTOR.clone(), SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.ANDROID_MEMORY_CORE.clone()
+                    SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.BLISTERING_INGOT.getItem().getItem(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(),
+                    SlimefunItems.REDSTONE_ALLOY.getItem().getItem(), IE_STORAGE_UNIT_5.getItem().clone(), SlimefunItems.REDSTONE_ALLOY.getItem().getItem(),
+                    SlimefunItems.ELECTRIC_MOTOR.getItem().getItem(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.ANDROID_MEMORY_CORE.getItem().getItem()
             });
 
     public static final IEStorageUnit IE_STORAGE_UNIT_7 = new IEStorageUnit(
             new SlimefunItemStack("BC_IE_STORAGE_UNIT_7", BCItemStacks.IE_STORAGE_UNIT_7),
             1_000_000_000,
             new ItemStack[]{
-                    SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.BLISTERING_INGOT_2.clone(), SlimefunItems.REINFORCED_PLATE.clone(),
-                    SlimefunItems.REDSTONE_ALLOY, IE_STORAGE_UNIT_6.getItem().clone(), SlimefunItems.REDSTONE_ALLOY,
-                    SlimefunItems.ELECTRIC_MOTOR.clone(), SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.ANDROID_MEMORY_CORE.clone()
+                    SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.BLISTERING_INGOT_2.getItem().getItem(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(),
+                    SlimefunItems.REDSTONE_ALLOY.getItem().getItem(), IE_STORAGE_UNIT_6.getItem().clone(), SlimefunItems.REDSTONE_ALLOY.getItem().getItem(),
+                    SlimefunItems.ELECTRIC_MOTOR.getItem().getItem(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.ANDROID_MEMORY_CORE.getItem().getItem()
             });
 
     public static final IEStorageUnit IE_STORAGE_UNIT_8 = new IEStorageUnit(
             new SlimefunItemStack("BC_IE_STORAGE_UNIT_8", BCItemStacks.IE_STORAGE_UNIT_8),
             2_140_000_000,
             new ItemStack[]{
-                    TIGHTLY_BLISTERING_INGOT.getItem().clone(), SlimefunItems.BLISTERING_INGOT_3.clone(), TIGHTLY_BLISTERING_INGOT.getItem().clone(),
-                    SlimefunItems.REDSTONE_ALLOY, IE_STORAGE_UNIT_7.getItem().clone(), SlimefunItems.REDSTONE_ALLOY,
-                    SlimefunItems.ELECTRIC_MOTOR.clone(), SlimefunItems.REINFORCED_PLATE.clone(), SlimefunItems.ANDROID_MEMORY_CORE.clone()
+                    TIGHTLY_BLISTERING_INGOT.getItem().clone(), SlimefunItems.BLISTERING_INGOT_3.getItem().getItem(), TIGHTLY_BLISTERING_INGOT.getItem().clone(),
+                    SlimefunItems.REDSTONE_ALLOY.getItem().getItem(), IE_STORAGE_UNIT_7.getItem().clone(), SlimefunItems.REDSTONE_ALLOY.getItem().getItem(),
+                    SlimefunItems.ELECTRIC_MOTOR.getItem().getItem(), SlimefunItems.REINFORCED_PLATE.getItem().getItem(), SlimefunItems.ANDROID_MEMORY_CORE.getItem().getItem()
             });
-
-    // Cargo
-    public static final P2PTransfer POINT_TO_POINT_TRANSFER = new P2PTransfer(
-            new SlimefunItemStack("BC_POINT_TO_POINT_TRANSFER", BCItemStacks.POINT_TO_POINT_TRANSFER),
-            RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[]{
-                    new ItemStack(Material.IRON_BARS), SlimefunItems.ALUMINUM_INGOT, new ItemStack(Material.IRON_BARS),
-                    new ItemStack(Material.REDSTONE_BLOCK), new ItemStack(Material.CHEST), new ItemStack(Material.REDSTONE_BLOCK),
-                    SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.SYNTHETIC_SAPPHIRE
-            });
-
+    
     private BCItems() {
     }
 
@@ -416,7 +405,5 @@ public class BCItems {
         IE_STORAGE_UNIT_6.register(BetterChests.INSTANCE);
         IE_STORAGE_UNIT_7.register(BetterChests.INSTANCE);
         IE_STORAGE_UNIT_8.register(BetterChests.INSTANCE);
-
-        //POINT_TO_POINT_TRANSFER.register(BetterChests.INSTANCE);
     }
 }
